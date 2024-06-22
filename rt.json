@@ -1,0 +1,29 @@
+{
+            "coupon_id": "4360",
+            "merchant_id": "cpd_1094",
+            "network_id": null,
+            "title": "on Rent Places to Stay in 190+ Countries ( all User)",
+            "description": "Get on Rent Places to Stay in 190+ Countries. This Offer is valid for all customers only. Click on Get Offer to redeem the Offer.",
+            "discount": "Best Offer",
+            "coupon_code": null,
+            "plain_link": "https://www.airbnb.co.in",
+            "exclusive": "0",
+            "start_date": null,
+            "end_date": null,
+            "verified_at": "29-01-2024",
+            "created_at": "26-12-2006",
+            "updated_at": "29-01-2024",
+            "category_names": [
+                "Travels",
+                "Domestic Hotels"
+            ],
+            "category_ids": [
+                2000,
+                2007
+            ],
+            "category_names_list": "Travels|Domestic Hotels",
+            "affiliate_link": "https://www.airbnb.co.in",
+            "merchant_logo": "https://publisher.coupomated.com/logos/images/merchants/9a3be1cfc7.png",
+            "merchant_name": "Airbnb",
+            "id": "4360"
+        }

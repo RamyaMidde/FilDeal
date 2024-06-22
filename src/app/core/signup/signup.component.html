@@ -1,0 +1,62 @@
+<form [formGroup]="registerForm" >
+    <div class="form-group">
+        <label
+            for="exampleInputname-sign-up">
+            Name</label>
+        <input type="text" class="form-control" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+            id="exampleInputname-sign-up"
+            placeholder="Name">
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                <div *ngIf="f['name'].errors['required']">Name is required</div>
+            </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="exampleInputEmailsign-up">Email</label>
+        <input type="text" class="form-control" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+            id="exampleInputEmailsign-up"
+            placeholder="Enter you email ...">
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+            </div>
+    </div>
+    <div class="form-group">
+        <label
+            for="exampleInputPasswordsign-up">Password</label>
+        <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+            class="form-control"
+            id="exampleInputPasswordsign-up"
+            placeholder="*** *** ***">
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                <div *ngIf="f['password'].errors['required']">Password is required</div>
+            </div>
+
+    </div>
+    <div class="form-group">
+        <label
+            for="exampleInputPasswordsign-up">Mobile</label>
+        <input type="text" formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f['mobile'].errors }"
+            class="form-control"
+            id="exampleInputPasswordsign-up"
+            placeholder="Enter Mobile Number...">
+            <div *ngIf="submitted && f['mobile'].errors" class="invalid-feedback">
+                <div *ngIf="f['mobile'].errors['required']">Mobile is required</div>
+                <div *ngIf="f['mobile'].errors['minLength']">Mobile is min length is required</div>
+            </div>
+    </div>
+    <button type="submit" (click)="signupSubmit()" class="btn btn-primary wd-login-btn">Sign
+        Up</button>
+
+    <div class="wd-policy">
+        <p>
+            Already u have an account ? I conferm that i have
+            read and userstand the <a
+                href="#">terms of uses</a> and
+            <a href="#">Privacy Policy</a>.
+            Don’t have an account? <a href="#"
+                class="black-color"><strong><u>Login</u></strong></a>
+        </p>
+    </div>
+</form>

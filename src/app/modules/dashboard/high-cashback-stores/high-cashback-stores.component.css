@@ -1,0 +1,26 @@
+.thumbnail {
+  display: block;
+  padding: 12px;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: border .2s ease-in-out;
+  -o-transition: border .2s ease-in-out;
+  transition: border .2s ease-in-out;
+}
+
+.section-title-center .title {
+  background: white;
+  FONT-SIZE: x-large;
+  font-family: serif;
+  font-weight: 600;
+}
+
+.compare-btn {
+  margin-top: 10px;
+  color: #22b922;
+  font-weight: 900;
+  font-size: 13px;
+}

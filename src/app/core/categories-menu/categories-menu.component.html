@@ -1,0 +1,89 @@
+
+<div *ngIf="loaderShow" class="preloader"></div>
+
+ <section class="magazine-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-xl-2">
+                <div class="">
+                    <div class="">
+                        <a href="#" class="menu-subtitle">Recharge</a>
+                        <ul class="sub-menu-list">
+                            <li *ngFor="let x of billRecharge" (click)="getFashion(x.parent_id, x.name)">
+                                <a><i class="fa fa-angle-double-right" aria-hidden="true"></i> &nbsp;{{x.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-xl-2">
+                <div class="">
+                    <div class="">
+                        <a href="#" class="menu-subtitle">Food</a>
+                        <ul class="sub-menu-list">
+                            <li *ngFor="let x of catgryFood" (click)="getFashion(x.parent_id, x.name)">
+                                <a><i class="fa fa-angle-double-right" aria-hidden="true"></i> &nbsp;{{x.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <div class="col-lg-2 col-xl-2">
+                <div class="">
+                    <div class="">
+                        <a href="#" class="menu-subtitle">Fashion and Accessories</a>
+                        <ul class="sub-menu-list">
+                            <li *ngFor="let x of catgryFashion" (click)="getFashion(x.parent_id, x.name)">
+                                <a><i class="fa fa-angle-double-right" aria-hidden="true"></i> &nbsp;{{x.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-xl-2">
+                <div class="">
+                    <div class="">
+                        <a href="#" class="menu-subtitle">Travel</a>
+                        <ul class="sub-menu-list">
+                            <li *ngFor="let x of catgryTravel" (click)="getTravels(x.parent_id, x.name)"><a><i
+                                        class="fa fa-angle-double-right" aria-hidden="true"></i>&nbsp;{{x.name}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-xl-2">
+                <div class="">
+                    <div class="">
+                        <a href="#" class="menu-subtitle">Other Categories</a>
+                        <ul class="sub-menu-list">
+                            <li *ngFor="let x of catgryOtherCatgry"  (click)="getOtherCatgry(x.parent_id, x.name)"><a><i class="fa fa-angle-double-right"
+                                        aria-hidden="true"></i> &nbsp;{{x.name}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="">
+                <div class="">
+                    <a href="#" class="menu-subtitle">Recharge</a>
+                    <ul class="sub-menu-list">
+                        <li *ngFor="let x of billRecharge" (click)="getFashion(x.parent_id, x.name)">
+                            <a><i class="fa fa-angle-double-right" aria-hidden="true"></i> &nbsp;{{x.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

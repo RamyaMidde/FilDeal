@@ -1,0 +1,22 @@
+.menu-subtitle {
+  font-size: 14px;
+  /* color: #cd3232; */
+  font-weight: 900;
+  height: 25px;
+    line-height: 25px;
+    color: #cd3232 !important;
+    white-space: nowrap;
+}
+
+.menu-subtitle li a{
+    padding: 5px !important;
+}
+
+.holiday-deals {
+  background: #e4f9fe;
+  cursor :pointer;
+}
+
+.sub-menu-list a {
+  cursor: pointer;
+}

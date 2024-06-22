@@ -1,0 +1,701 @@
+<header>
+    <section id="wd-header" class="dark-header">
+        <div class="container custom-width">
+            <div class="row">
+
+                <div class="col-md-12 col-lg-3 col-xl-3 text-center second-home-main-logo ">
+                    <a class="navbar-brand" href="#">
+                        <div class="cd-logo lrg-logo">
+                            <img style="padding: unset;" src="../../../assets/img/fil-logo.png" alt="CouponDeal-logo">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-6 col-lg-6 slider-search-section d-none d-lg-block">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-secondary wd-slider-search-btn" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                All <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu wd-dropdown-menu">
+                                <div class="search-category">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="search-category-title">Cameras and photos</h6>
+                                            <ul class="single-dropdown">
+                                                <li><a href="#">Home Page 1</a></li>
+                                                <li><a href="#">Home page 1 Fullwidth</a></li>
+                                                <li><a href="#">Home Page 2</a></li>
+                                                <li><a href="#">Home Page 3</a></li>
+                                                <li><a href="#">Home Page Magazine</a></li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control input-search-box"
+                            placeholder="Enter your search key ...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary wd-search-btn" type="button"><i class="fa fa-search"
+                                    aria-hidden="true"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3  col-xl-3 text-right">
+                    <div *ngIf="!showLoginModal" class="language-and-currency-btn">
+                        <i style="color: aliceblue;" class="fa fa-user" aria-hidden="true"></i> &nbsp;
+                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                            <div class="btn-group" role="group">
+                                <span style="color: white;" id="btnGroupDrop3" class=" wd-btn-country dropdown-toggle"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{userLogin}}
+                                </span>
+                                <div style="width: 250px; height: 250px;" class="dropdown-menu wd-btn-country-list"
+                                    aria-labelledby="btnGroupDrop3">
+                                    <a class="dropdown-item" href="#"> <img
+                                            src="https://d3mqyttn50wslf.cloudfront.net/modules/web/assets/images/header/Group_166.svg"
+                                            alt="earning"> My Earning </a>
+                                    <a class="dropdown-item" href="#"> <img
+                                            src="https://d3mqyttn50wslf.cloudfront.net/modules/web/assets/images/header/Group_174.svg"
+                                            alt="WidthDraw"> WidthDraw Money </a>
+                                    <a (click)="removeUser()" class="dropdown-item" href="#"><img
+                                            src="https://d3mqyttn50wslf.cloudfront.net/modules/web/assets/images/header/Group_182.svg"
+                                            alt=""> LogOut</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <button *ngIf="showLoginModal" class="btn btn-primary my-account d-none d-lg-block btn-header"
+                        data-toggle="modal" id="btnGroupDrop3" data-target=".bd-example-modal-lg2">
+                        <i class="fa fa-user" aria-hidden="true"></i> My account {{userLogin}}
+                    </button>
+                    <div class="modal fade bd-example-modal-lg2" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="container">
+                                    <div class="row text-left">
+                                        <div>
+                                            <div class="modal-tab-section wd-modal-tabs">
+                                                <ul class="nav nav-tabs wd-modal-tab-menu text-center" id="myTabs"
+                                                    role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" id="login-tab" data-toggle="tab"
+                                                            href="#login" role="tab" aria-controls="login"
+                                                            aria-expanded="true">Login</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="sign-up-tab" data-toggle="tab"
+                                                            href="#sign-up" role="tab" aria-controls="sign-up">Sign
+                                                            up</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content" id="myTabContent">
+                                                    <div class="tab-pane fade show active" id="login" role="tabpanel"
+                                                        aria-labelledby="login-tab">
+
+                                                        <div class="row">
+                                                            <div style="background-color: #28a794"
+                                                                class="col-md-6 p0 brand-description-area">
+                                                                <div class="brand-description">
+                                                                    <div class="brand-logo">
+                                                                        <img src="assets/img/header-logo.png"
+                                                                            alt="Logo">
+                                                                    </div>
+                                                                    <div class="modal-description">
+                                                                        <span>Login with CouponDeals.</span> <br>
+                                                                        <span
+                                                                            style="color: #fdb813; font-weight: 600;">EARN
+                                                                            CASHBACK EVERY TIME YOU SHOP</span>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 col-lg-6 p0">
+                                                                <div class="login-section text-center">
+                                                                    <div class="social-media">
+                                                                        <a href="#" class="facebook-bg"><i
+                                                                                class="fa fa-facebook"
+                                                                                aria-hidden="true"></i> Login</a> &nbsp;
+                                                                        &nbsp;
+
+                                                                        <a href="#" class="google-bg">
+                                                                            <i class="fa fa-google-plus"
+                                                                                aria-hidden="true"></i> Login</a>
+                                                                    </div>
+                                                                    <div class="login-form text-left">
+                                                                        <app-login></app-login>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="tab-pane fade" id="sign-up" role="tabpanel"
+                                                        aria-labelledby="sign-up-tab">
+
+                                                        <div class="row">
+                                                            <div style="background-color: #28a794;"
+                                                                class="col-md-6 p0 brand-login-section">
+
+                                                                <div class="brand-description">
+                                                                    <div class="brand-logo">
+                                                                        <img src="assets/img/header-logo.png"
+                                                                            alt="Logo">
+                                                                    </div>
+                                                                    <div class="modal-description">
+                                                                        <span>Sign Up with CouponDeals.</span> <br>
+                                                                        <span
+                                                                            style="color: #fdb813; font-weight: 600;">EARN
+                                                                            CASHBACK EVERY TIME YOU SHOP</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 p0">
+                                                                <div class="sign-up-section text-center">
+                                                                    <div class="login-form text-left">
+                                                                        <app-signup></app-signup>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+
+
+<!-- =========================
+    Header Section
+<! ============================== -->
+<section id="wd-header-2" class="wd-header-nav sticker-nav mob-sticky bg-orange">
+    <div class="container-fluid custom-width">
+        <div class="row">
+            <div class="col-md-8 col-2 col-sm-6 col-md-4 d-block d-lg-none">
+                <div class="accordion-wrapper hide-sm-up">
+                    <a href="#" class="mobile-open"><i class="fa fa-bars"></i></a>
+                    <!--Mobile Menu start-->
+
+                    <ul id="mobilemenu" class="accordion">
+                        <!-- <li class="mob-logo"><a href="index.html"><img src="img/logo.png" alt=""></a></li>-->
+                        <li><a class="closeme" href="#"><i class="fa fa-times"></i></a></li>
+                        <li class="mob-logo"><a href="#"><img src="img/logo.png" alt=""></a></li>
+                        <li>
+                            <div class="link">Categories<i class="fa fa-chevron-down"></i></div>
+                            <ul class="submenu font-sky">
+                                <li><a href="index.html">Home one</a></li>
+                                <li><a href="index-01-02.html">Home one Fullwidth</a></li>
+                                <li><a href="index-second-home.html">Home two</a></li>
+                                <li><a href="index-third-home.html">Home three</a></li>
+                                <li><a href="magazine.html">Home Page Magazine </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="link ">TopStores<i class="fa fa-chevron-down"></i></div>
+                            <ul class="submenu">
+
+                                <li><a href="shop-left-sidebar.html">Shop Page</a></li>
+                                <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+                                <li><a href="shop-left-sidebar-full-grid.html">Shop Left Sidebar Full Grid</a></li>
+                                <li><a href="shop-right-sidebar-full-grid.html">Shop Right Sidebar Full Grid</a></li>
+                                <li><a href="product-details.html">Product Details</a></li>
+                                <li><a href="product-details-scroll.html">Product Details v2</a></li>
+                                <li><a href="wishlist.html">Wishlist View</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="link">Best Offers<i class="fa fa-chevron-down"></i></div>
+                            <ul class="submenu ">
+                                <li><a href="shop-left-sidebar.html">Visual Phones</a></li>
+                                <li><a href="shop-left-sidebar.html">Chinese phones</a></li>
+                                <li><a href="shop-left-sidebar.html">Google Phones</a></li>
+                                <li><a href="shop-left-sidebar.html">Video cameras</a></li>
+                                <li><a href="shop-left-sidebar.html">Top Cameras</a></li>
+                                <li><a href="shop-left-sidebar.html">Cheap Cameras</a></li>
+                                <li><a href="shop-left-sidebar.html">Best Cameras</a></li>
+                                <li><a href="shop-left-sidebar.html">Luxury Cameras</a></li>
+                                <li><a href="shop-left-sidebar.html">Simple Cameras</a></li>
+                                <li><a href="shop-left-sidebar.html">Phone Electronice</a></li>
+                                <li><a href="shop-left-sidebar.html">Phone Appereances</a></li>
+                                <li><a href="shop-left-sidebar.html">Visual Phones</a></li>
+                                <li><a href="shop-left-sidebar.html">Chinese phones</a></li>
+                                <li><a href="shop-left-sidebar.html">Google Phones</a></li>
+                                <li><a href="shop-left-sidebar.html">Cheap Phones</a></li>
+                                <li><a href="shop-left-sidebar.html">Luxury phones</a></li>
+                                <li><a href="shop-left-sidebar.html">Simple phones</a></li>
+                                <li><a href="shop-left-sidebar.html">Camera Electronice</a></li>
+                                <li><a href="shop-left-sidebar.html">Camera Appereances</a></li>
+                                <li><a href="shop-left-sidebar.html">DSLR</a></li>
+                                <li><a href="shop-left-sidebar.html">Video cameras</a></li>
+                                <li><a href="shop-left-sidebar.html">Top Cameras</a></li>
+                                <li><a href="shop-left-sidebar.html">Cheap Cameras</a></li>
+                                <li><a href="shop-left-sidebar.html">Best Cameras</a></li>
+                                <li><a href="shop-left-sidebar.html">Luxury Cameras</a></li>
+                                <li><a href="shop-left-sidebar.html">Simple Cameras</a></li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <div class="link">Collections<i class="fa fa-chevron-down"></i></div>
+                            <ul class="submenu">
+                                <li><a href="product-details-review-history.html">Product History</a></li>
+                                <li><a href="product-details-single-review.html">Single Review</a></li>
+                                <li><a href="review-left-sidebar.html">Review Left Sidebar</a></li>
+                                <li><a href="review-right-sidebar.html">Review Right Sidebar</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="link">Share & Earn<i class="fa fa-chevron-down"></i></div>
+                            <ul class="submenu">
+                                <li><a href="blog-full-grid.html">Blog Full Grid</a></li>
+                                <li><a href="blog-two-grid.html">Blog Two Grid</a></li>
+                                <li><a href="blog-three-grid.html">Blog Three Grid</a></li>
+                                <li><a href="blog-four-grid.html">Blog Four Grid</a></li>
+                                <li><a href="blog-four-grid-left-sidebar.html">Blog Four Grid Left Sidebar</a></li>
+                                <li><a href="blog-four-grid-right-sidebar.html">Blog Four Grid Right Sidebar</a></li>
+                                <li><a href="single-blog-with.html">Single Blog</a></li>
+                                <li><a href="single-blog-with-add.html">Single Blog With Add</a></li>
+                            </ul>
+                        </li>
+                        <li class="out-link"><a class="" href="contact-us.html">Contact</a></li>
+                    </ul>
+                    <!--Mobile Menu end-->
+                </div>
+            </div><!--Mobile menu end-->
+            <div class="col-xl-3 d-none d-xl-block">
+                <!-- <div class="department" id="cat-department">
+                        <img src="assets/img/menu-bar.png" alt="menu-bar">
+                        All Department
+                
+                        <div id="department-list" class="department-list">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <a href="#!">
+                                        <div class="department-list-logo">
+                                            <img src="img/department-img/department-img-1.png" alt="">
+                                        </div>
+                                        <span class="sub-list-main-menu">Furniture</span> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </a>
+                                    <div class="wd-sub-list">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <h6 class="black-color wd-sub-list-title">Cameras and photos</h6>
+                                                    <ul class="wd-sub-menu">
+                                                        <li><a href="shop-left-sidebar.html">Camera Electronice</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Camera Appereances</a></li>
+                                                        <li><a href="shop-left-sidebar.html">DSLR</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Video cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Top Cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cheap Cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Best Cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Luxury Cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Simple Cameras</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h6 class="black-color wd-sub-list-title">Cameras and photos</h6>
+                                                    <ul class="wd-sub-menu">
+                                                        <li><a href="shop-left-sidebar.html">Camera Electronice</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Camera Appereances</a></li>
+                                                        <li><a href="shop-left-sidebar.html">DSLR</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Video cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Top Cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cheap Cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Best Cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Luxury Cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Simple Cameras</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h6 class="black-color wd-sub-list-title">Cameras and photos</h6>
+                                                    <ul class="wd-sub-menu">
+                                                        <li><a href="shop-left-sidebar.html">Camera Electronice</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Camera Appereances</a></li>
+                                                        <li><a href="shop-left-sidebar.html">DSLR</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Video cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Top Cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Cheap Cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Best Cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Luxury Cameras</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Simple Cameras</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <a href="product-details-scroll.html"><img src="img/department-img/department-sub-list-img-1.jpg" class="department-sub-list-img" alt="department-sub-list-img"></a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <a href="product-details-scroll.html"><img src="img/department-img/department-sub-list-img-2.jpg" class="department-sub-list-img" alt="department-sub-list-img"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                    <div class="department-list-logo">
+                                        <img src="img/department-img/department-img-2.png" alt="">
+                                    </div><span class="sub-list-main-menu">Household</span></a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                    <div class="department-list-logo">
+                                        <img src="img/department-img/department-img-3.png" alt="">
+                                    </div><span class="sub-list-main-menu">Clothes</span></a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                    <div class="department-list-logo">
+                                        <img src="img/department-img/department-img-4.png" alt="">
+                                    </div><span class="sub-list-main-menu">Accessories</span></a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                    <div class="department-list-logo">
+                                        <img src="img/department-img/department-img-5.png" alt="">
+                                    </div><span class="sub-list-main-menu">Electronics</span></a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                    <div class="department-list-logo">
+                                        <img src="img/department-img/department-img-6.png" alt="">
+                                    </div><span class="sub-list-main-menu">Corporate staff</span></a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                    <div class="department-list-logo">
+                                        <img src="img/department-img/department-img-7.png" alt="">
+                                    </div><span class="sub-list-main-menu">Sinking staff</span></a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                    <div class="department-list-logo">
+                                        <img src="img/department-img/department-img-8.png" alt="">
+                                    </div><span class="sub-list-main-menu">Plant</span></a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                    <div class="department-list-logo">
+                                        <img src="img/department-img/department-img-9.png" alt="">
+                                    </div><span class="sub-list-main-menu">Washing machine</span></a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                    <div class="department-list-logo">
+                                        <img src="img/department-img/department-img-10.png" alt="">
+                                    </div><span class="sub-list-main-menu">Winding staff</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
+            </div>
+
+
+            <div style="margin-left: 5%;" class="col-md-6 col-lg-10 col-xl-7 header-search-box d-none d-lg-block">
+                <div id="main-menu-2" class="main-menu-desktop no-border main-menu-sh">
+                    <div class="menu-container wd-megamenu text-left">
+                        <div class="menu">
+                            <ul class="wd-megamenu-ul">
+                                <li class="pos-inherit"><a href="" class="main-menu-list ">Categories</a>
+                                    <ul class="single-dropdown megamenu">
+                                        <li>
+                                            <a class="menu-subtitle">Recharge</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of billRecharge"
+                                                    (click)="getRecharge(x.parent_id, x.name)">
+                                                    <a> <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{x.name}}</a>
+                                                </li>
+                                            </ul>
+
+                                            <a href="#" class="menu-subtitle">Food & Dining</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of catgryFood" (click)="getFood(x.parent_id, x.name)">
+                                                    <a>
+                                                        <i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.name}}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="menu-subtitle">Fashion and Accessories</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of catgryFashion"
+                                                    (click)="getFashion(x.parent_id, x.name)">
+                                                    <a><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.name}}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+
+                                        <li>
+
+                                            <a href="#" class="menu-subtitle">Travel</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of catgryTravel"
+                                                    (click)="getTravels(x.parent_id, x.name)"><a><i
+                                                            class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.name}}</a></li>
+                                            </ul>
+
+
+
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="menu-subtitle">Other Categories</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of catgryOtherCatgry"><a><i
+                                                    (click)="getOtherCatgry(x.parent_id, x.name)"    class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.name}}</a></li>
+                                            </ul>
+
+                                            <a style="margin-top: 10%; color: #5f5cd5;" href="#"
+                                                class="menu-subtitle">View Other Categories <i
+                                                    class="fa fa-angle-double-right"></i></a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <li class="pos-inherit">
+                                    <a href="" class="main-menu-list ">Top Stores</a>
+                                    <ul class="single-dropdown megamenu">
+                                        <li *ngFor="let x of topStoreData">
+                                            <ul class="sub-menu-list">
+                                                <li (click)="getTopStoreParId(x.id, x.name)">
+                                                    <a style="font-weight: bold;"> <i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i><span>{{x.name}}</span> </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="menu-subtitle">Other TopStores</a>
+                                            <ul class="sub-menu-list">
+                                            </ul>
+                                            <a style="margin-top: 10%; color: #5f5cd5;" href="#"
+                                                class="menu-subtitle">View Other Categories <i
+                                                    class="fa fa-angle-double-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+
+                                <li class="pos-inherit">
+                                    <a href="" class="main-menu-list ">Best Offers</a>
+                                    <ul class="single-dropdown megamenu">
+                                        <div class="row">
+                                            <div class="col-sm-4 md-4">
+                                                <ul class="nav nav-tabs nav-fill flex-column" id="myTab" role="tablist">
+                                                    <li class="nav-item">
+                                                        <div>
+                                                            <ul class="nav vtab f41-tab">
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link active" id="home-tab"
+                                                                        data-toggle="tab" href="#home">
+                                                                        <div class="display-5 t-icon"><i
+                                                                                class="icon-Structure"></i></div>
+                                                                        <div>
+                                                                            <h5 class="m-b-0">Electronics</h5>
+
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" id="profile-tab"
+                                                                        data-toggle="tab" href="#profile">
+                                                                        <div class="display-5 t-icon"><i
+                                                                                class="icon-Brain-2"></i></div>
+                                                                        <div>
+                                                                            <h5 class="m-b-0">Fashion.</h5>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" id="dropdown1-tab"
+                                                                        data-toggle="tab" href="#dropdown1">
+                                                                        <div class="display-5 t-icon"><i
+                                                                                class="icon-Dollar-Sign"></i></div>
+                                                                        <div>
+                                                                            <h5 class="m-b-0">Beauty & Health</h5>
+                                                                           
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" id="ssd-tab" data-toggle="tab"
+                                                                        href="#ssd">
+                                                                        <div class="display-5 t-icon"><i
+                                                                                class="icon-Data-Center"></i></div>
+                                                                        <div>
+                                                                            <h5 class="m-b-0">Travel</h5>
+                                                                            
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- /.col-md-4 -->
+                                            <div class="col-lg-7 ml-auto">
+                                                <div class="tab-content" id="myTabContent">
+                                                    <div class="tab-pane fade show active" id="home" role="tabpanel">
+                                                        <li>
+                                                            <ul class="sub-menu-list">
+                                                                <li class="ul-con" *ngFor="let x of offerListDat">
+                                                                    <a><img src="{{x.merchant_logo}}" alt=""
+                                                                            width="60"></a>
+                                                                    <p style="font-size: 10px;">{{x.discount}}</p>
+                                                                    <p style="font-size: 10px; color: green;">
+                                                                        {{x.title}}</p>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+
+
+
+                                                    </div>
+                                                    <div class="tab-pane fade" id="profile" role="tabpanel">
+                                                        <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/all-demos/demo-landingpage-app/images/img2.jpg"
+                                                            alt="wrapkit" class="rounded img-fluid">
+                                                        <p class="m-t-40">Lorem ipsum dolor sit amet, consectetuer
+                                                            adipiscing elit, sed
+                                                            diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                            aliquam erat
+                                                            volutpat.</p> <a
+                                                            class="btn btn-info btn-md btn-arrow m-t-20"
+                                                            data-toggle="collapse" href="#f41"><span>View More <i
+                                                                    class="ti-arrow-right"></i></span></a>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="dropdown1" role="tabpanel">
+                                                        <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/all-demos/demo-landingpage-app/images/img3.jpg"
+                                                            alt="wrapkit" class="rounded img-fluid">
+                                                        <p class="m-t-40">Lorem ipsum dolor sit amet, consectetuer
+                                                            adipiscing elit, sed
+                                                            diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                            aliquam erat
+                                                            volutpat.</p> <a
+                                                            class="btn btn-info btn-md btn-arrow m-t-20"
+                                                            data-toggle="collapse" href="#f41"><span>View More <i
+                                                                    class="ti-arrow-right"></i></span></a>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="ssd" role="tabpanel">
+                                                        <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/all-demos/demo-landingpage-app/images/img4.jpg"
+                                                            alt="wrapkit" class="rounded img-fluid">
+                                                        <p class="m-t-40">Lorem ipsum dolor sit amet, consectetuer
+                                                            adipiscing elit, sed
+                                                            diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                            aliquam erat
+                                                            volutpat.</p> <a
+                                                            class="btn btn-info btn-md btn-arrow m-t-20"
+                                                            data-toggle="collapse" href="#f41"><span>View More <i
+                                                                    class="ti-arrow-right"></i></span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.col-md-8 -->
+                                        </div>
+                                    </ul>
+                                </li>
+
+
+
+                                <li class="pos-inherit"><a href="" class="main-menu-list ">Collections</a>
+                                    <ul class="single-dropdown megamenu">
+                                        <li>
+                                            <a class="menu-subtitle">Mega Sale</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of megaSale">
+                                                    <a> <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{x.name}}</a>
+                                                </li>
+                                            </ul>
+
+                                            <a href="#" class="menu-subtitle">Wallet</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of walletSale"><a>
+                                                        <i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.name}}</a></li>
+                                            </ul>
+
+
+                                        </li>
+                                        <li>
+
+                                            <a href="#" class="menu-subtitle">Festival</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of festivalSale"><a><i
+                                                            class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.name}}</a></li>
+                                            </ul>
+
+                                            <a href="#" class="menu-subtitle">Bank</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of bankSale"><a><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.name}}</a></li>
+                                            </ul>
+                                        </li>
+
+
+                                        <li>
+                                            <a href="#" class="menu-subtitle">Other Categories</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of catgryOtherCatgry"><a><i
+                                                            class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.subcategories}}</a></li>
+                                            </ul>
+
+                                            <a style="margin-top: 10%; color: #5f5cd5;" href="#"
+                                                class="menu-subtitle">View Other Collections <i
+                                                    class="fa fa-angle-double-right"></i></a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li style="cursor: pointer;" routerLink="/share&Earn"><a class="main-menu-list">Share &
+                                        Earn <sup style="color: orange;">New</sup></a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10 col-sm-6 col-md-4 col-lg-2 col-xl-2 text-right">
+                <!-- =========================
+                         Cart Out 
+                    ============================== -->
+
+                <!-- <div class="header-cart">
+              
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- =========================
+    Slider Section
+============================== -->
+
+
+<!-- =========================
+    Choose Category
+============================== -->

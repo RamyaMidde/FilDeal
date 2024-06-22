@@ -1,0 +1,284 @@
+<section id="product-amazon">
+    <div class="container">
+        <div class="row">
+            <div class="col-offset-2 col-md-12">
+                <div class="section-title-center text-left">
+                    <span class="title pl-0">Best Collections</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12 coupon-page-search">
+                <div class="input-group wd-btn-group header-search-option">
+                    <input class="form-control blurb-search"   [(ngModel)]="filterSearch" placeholder="Search top Stores..."
+                        aria-label="Search for..." type="text">
+                    <span class="input-group-btn">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <br>
+
+<section id="product-amazon">
+    <div class="container">
+        <div class="row">
+            <div class="col-offset-2 col-md-12">
+                <div class="section-title-center text-left">
+                    <span class="title pl-0">Bank Sales</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let x of bankSale | filter:filterSearch" class="col-6 col-md-6 col-lg-3">
+                <figure class="thumbnail">
+                    <div class="quick-view-btn">
+                        <div class="compare-btn">
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-product-1"><i class="fa fa-eye" aria-hidden="true"></i> Quick view</button>
+                        </div>
+                    </div>
+                    <figcaption class=" text-center">
+                        <a>
+                            <img src="{{x.merchant_logo}}" class="figure-img img-fluid" alt="Product Img" width="100" height="100">
+                        </a>
+                        <div class="content-excerpt">
+                            <p><a style="color: red; font-weight: 600;"> {{x.name}} </a></p>
+                        </div>
+                        <div class="compare-btn">
+                            <p style="font-size: 10px; font-weight: bold; padding: 10px;">{{x.category_names | nameMaxLength:20}}</p>
+                             <a  class="btn btn-primary btn-sm"  (click)="getBestOfferKey(x.merchant_id, x.merchant_name)">More Offers</a>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+
+<section id="product-amazon">
+    <div class="container">
+        <div class="row">
+            <div class="col-offset-2 col-md-12">
+                <div class="section-title-center text-left">
+                    <span class="title pl-0">Wallet</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let x of wallet | filter:filterSearch" class="col-6 col-md-6 col-lg-3">
+                <figure class="thumbnail">
+                    <div class="quick-view-btn">
+                        <div class="compare-btn">
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-product-1"><i class="fa fa-eye" aria-hidden="true"></i> Quick view</button>
+                        </div>
+                    </div>
+                    <figcaption class=" text-center">
+                        <a>
+                            <img src="{{x.merchant_logo}}" class="figure-img img-fluid" alt="Product Img" width="100" height="100">
+                        </a>
+                        <div class="content-excerpt">
+                            <p><a style="color: red; font-weight: 600;"> {{x.name}} </a></p>
+                        </div>
+                        <div class="compare-btn">
+                            <p style="font-size: 10px; font-weight: bold; padding: 10px;">{{x.category_names | nameMaxLength:20}}</p>
+                             <a  class="btn btn-primary btn-sm"  (click)="getBestOfferKey(x.merchant_id, x.merchant_name)">More Offers</a>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<section id="product-amazon">
+    <div class="container">
+        <div class="row">
+            <div class="col-offset-2 col-md-12">
+                <div class="section-title-center text-left">
+                    <span class="title pl-0">Sales List</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let x of saleslist | filter:filterSearch" class="col-6 col-md-6 col-lg-3">
+                <figure class="thumbnail">
+                    <div class="quick-view-btn">
+                        <div class="compare-btn">
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-product-1"><i class="fa fa-eye" aria-hidden="true"></i> Quick view</button>
+                        </div>
+                    </div>
+                    <figcaption class=" text-center">
+                        <a>
+                            <img src="{{x.merchant_logo}}" class="figure-img img-fluid" alt="Product Img" width="100" height="100">
+                        </a>
+                        <div class="content-excerpt">
+                            <p><a style="color: red; font-weight: 600;"> {{x.name}} </a></p>
+                        </div>
+                        <div class="compare-btn">
+                            <p style="font-size: 10px; font-weight: bold; padding: 10px;">{{x.category_names | nameMaxLength:20}}</p>
+                             <a  class="btn btn-primary btn-sm"  (click)="getBestOfferKey(x.merchant_id, x.merchant_name)">More Offers</a>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<section id="product-amazon">
+    <div class="container">
+        <div class="row">
+            <div class="col-offset-2 col-md-12">
+                <div class="section-title-center text-left">
+                    <span class="title pl-0">festival List</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let x of festivallist | filter:filterSearch" class="col-6 col-md-6 col-lg-3">
+                <figure class="thumbnail">
+                    <div class="quick-view-btn">
+                        <div class="compare-btn">
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-product-1"><i class="fa fa-eye" aria-hidden="true"></i> Quick view</button>
+                        </div>
+                    </div>
+                    <figcaption class=" text-center">
+                        <a>
+                            <img src="{{x.merchant_logo}}" class="figure-img img-fluid" alt="Product Img" width="100" height="100">
+                        </a>
+                        <div class="content-excerpt">
+                            <p><a style="color: red; font-weight: 600;"> {{x.name}} </a></p>
+                        </div>
+                        <div class="compare-btn">
+                            <p style="font-size: 10px; font-weight: bold; padding: 10px;">{{x.category_names | nameMaxLength:20}}</p>
+                             <a  class="btn btn-primary btn-sm"  (click)="getBestOfferKey(x.merchant_id, x.merchant_name)">More Offers</a>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<section  id="product-amazon">
+    <div class="container">
+        <div class="row">
+            <div class="col-offset-2 col-md-12">
+                <div class="section-title-center text-left">
+                    <span class="title pl-0">Special Collections</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let x of speciallist | filter:filterSearch" class="col-6 col-md-6 col-lg-3">
+                <figure class="thumbnail">
+                    <div class="quick-view-btn">
+                        <div class="compare-btn">
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-product-1"><i class="fa fa-eye" aria-hidden="true"></i> Quick view</button>
+                        </div>
+                    </div>
+                    <figcaption class=" text-center">
+                        <a>
+                            <img src="{{x.merchant_logo}}" class="figure-img img-fluid" alt="Product Img" width="100" height="100">
+                        </a>
+                        <div class="content-excerpt">
+                            <p><a style="color: red; font-weight: 600;"> {{x.name}} </a></p>
+                        </div>
+                        <div class="compare-btn">
+                            <p style="font-size: 10px; font-weight: bold; padding: 10px;">{{x.category_names | nameMaxLength:20}}</p>
+                             <a  class="btn btn-primary btn-sm"  (click)="getBestOfferKey(x.merchant_id, x.merchant_name)">More Offers</a>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<section id="product-amazon">
+    <div class="container">
+        <div class="row">
+            <div class="col-offset-2 col-md-12">
+                <div class="section-title-center text-left">
+                    <span class="title pl-0">Promotion List</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let x of promotionlist | filter:filterSearch" class="col-6 col-md-6 col-lg-3">
+                <figure class="thumbnail">
+                    <div class="quick-view-btn">
+                        <div class="compare-btn">
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-product-1"><i class="fa fa-eye" aria-hidden="true"></i> Quick view</button>
+                        </div>
+                    </div>
+                    <figcaption class=" text-center">
+                        <a>
+                            <img src="{{x.merchant_logo}}" class="figure-img img-fluid" alt="Product Img" width="100" height="100">
+                        </a>
+                        <div class="content-excerpt">
+                            <p><a style="color: red; font-weight: 600;"> {{x.name}} </a></p>
+                        </div>
+                        <div class="compare-btn">
+                            <p style="font-size: 10px; font-weight: bold; padding: 10px;">{{x.category_names | nameMaxLength:20}}</p>
+                             <a  class="btn btn-primary btn-sm"  (click)="getBestOfferKey(x.merchant_id, x.merchant_name)">More Offers</a>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+            <div *ngIf="promotionlist.length === 0">
+                <p>No data for this collection</p>
+             </div>
+        </div>
+    </div>
+</section> <br>
+
+
+
+

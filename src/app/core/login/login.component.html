@@ -1,0 +1,44 @@
+<form [formGroup]="loginForm" >
+    <div class="form-group">
+        <label for="exampleInputEmaillogin">Email / Mobile:</label>
+        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+            id="exampleInputEmaillogin"
+            placeholder="Enter Email/Mobile |">
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">email/mobile number is required</div>
+            </div>
+    </div>
+    <div class="form-group">
+        <label
+            for="exampleInputPasswordlogin">Password</label>
+        <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+            class="form-control"
+            id="exampleInputPasswordlogin"
+            placeholder="*** *** ***">
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                <div *ngIf="f['password'].errors['required']">password is required</div>
+            </div>
+    </div>
+    <button type="submit"  (click)="loginSubmit()"
+        class="btn btn-primary wd-login-btn">LOGIN</button>
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input type="checkbox"
+                class="form-check-input">
+            Save this password
+        </label>
+    </div>
+
+    <div class="wd-policy">
+        <p>
+            By Continuing. I conferm that i have
+            read and userstand the <a
+                href="#">terms of uses</a> and
+            <a href="#">Privacy Policy</a>.
+            Don’t have an account? <a href="#"
+                class="black-color"><strong><u>Sign
+                        up</u></strong></a>
+        </p>
+    </div>
+</form>

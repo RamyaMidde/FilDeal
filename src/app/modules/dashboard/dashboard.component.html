@@ -1,0 +1,671 @@
+<div class="slider-section">
+    <div class="container-fluid custom-width">
+        <div>
+            <span class="headMat">Welcome to FilDeal's - India's Trusted Coupons, Offers & Cashback Website</span>
+        </div>
+
+        <div>
+            <div style="margin-top: 1%;">
+                <div>
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-container *ngFor="let slide of bannerImgList">
+                            <ng-template carouselSlide [id]="slide.id">
+                                <img [src]="slide.bannerImg" >
+                            </ng-template>
+                        </ng-container>
+                    </owl-carousel-o>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- excluse deals -->
+
+    <div class="container-fluid custom-width">
+        <div class="choose-category-area-box">
+            <div class="item">
+                <div class="col-md-12">
+                    <div class="section-title-center text-left">
+                        <h2 style="background-color: white;" class="title pl-0">EXCLUSIVE DEALS</h2>
+                    </div>
+                </div>
+                <div style="text-align: center;" class="content-pd" *ngFor="let item of exclusiveImgList">
+                    <figure>
+                        <img src="{{item.images}}" alt="b4">
+                    </figure>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- top stores -->
+    <section id="choose-category">
+        <div class="container-fluid custom-width">
+            <div class="choose-category-area-box">
+                <div class="col-md-12">
+                    <div class="section-title-center text-left">
+                        <h2 style="background-color: white;" class="title pl-0">TOP STORES</h2>
+                    </div>
+                </div>
+                <div>
+                    <h3 (click)="getTopStores()" class="top-headings"
+                        style="font-family: Helvetica Neue;font-size: x-large; float: right; margin-top: -32px; cursor: pointer;">
+                        <a style="color: green; font-size: 18px; font-weight: 600;">VIEW MORE</a>
+                    </h3>
+                </div>
+                <div class="row">
+                    <div *ngFor="let item of topStoreList | limitLength : 12"
+                        class="col-sm-6 col-md-4 col-lg-3 choose-category-box wow fadeIn animated"
+                        data-wow-delay="300ms">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <div class="col-sm-6">
+                                <div class="category-img">
+                                    <a href="{{item.affiliate_link}}" target="_blank">
+                                        <img class="img-fluid" src="{{item.merchant_logo}}" width="100" height="100"
+                                            alt="logo-merchant"></a>
+                                </div>
+                            </div>
+                            <div class="offset-1 col-sm-5">
+                                <div class="category-info">
+                                    <p style="font-size: 15px; font-weight: bold;">{{item.name}}</p>
+                                    <a class="" href="{{item.affiliate_link}}" target="_blank"
+                                        class="badge badge-light chooses-category-link">{{item.discount}}</a>
+                                    <a href="{{item.affiliate_link}}" target="_blank"
+                                        class="badge badge-light choose-category-link">Go Link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div style="margin-top: 2%;" class="slider-section">
+    <div class="container-fluid custom-width">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title-center text-left">
+                    <h2 style="background-color: white;" class="title pl-0">HIGH CASHBACK STORES</h2>
+                </div>
+                <h3 (click)="getHishCashBack()" class="top-headings"
+                    style="font-family: Helvetica Neue;font-size: x-large; float: right; margin-top: -32px; cursor: pointer;">
+                    <a style="color: green; font-size: 18px; font-weight: 600; cursor: pointer">VIEW ALL</a>
+                </h3>
+            </div>
+        </div>
+        <div>
+
+        </div>
+        <owl-carousel-o [options]="customOptionCard">
+            <ng-container *ngFor="let slide of highCashbacklist  | limitLength:8">
+                <ng-template carouselSlide [id]="slide.id">
+                    <div class="thumbnail card card-slider img-length">
+                        <img style="padding: 10px;" [src]="slide.merchant_logo" [alt]="slide.alt" [title]="slide.title"
+                            width="100" height="100">
+                        <div class="title">
+                            <h5 style="color: rgb(30, 32, 30); font-weight: bold; text-align: center; font-size: 10px;">
+                                {{slide.merchant_name}}</h5>
+                        </div>
+                        <div class="hc-cb-info cb-text">
+                            <div class="coupon-code cb-text">
+                                <span style="font-size: 13px;">{{slide?.discount ?? 'no discount'}}</span>
+                                <button (click)="getHishCashBack()" type="button" class="coupon-hcode"
+                                    data-toggle="modal" data-target=".bd-example-modal-lg-product-1">
+                                    <span class="getcode">Actived</span>
+                                    <span class="hcode">{{slide.coupon_id}}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </ng-template>
+
+            </ng-container>
+
+        </owl-carousel-o>
+    </div>
+</div>
+
+<div style="margin-top: 2%;" class="slider-section">
+    <div class="container-fluid custom-width">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title-center text-left">
+                    <h2 style="background-color: white;" class="title pl-0">CASHBACK INCREASED
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <!-- <div>
+            <h3 (click)="getHishCashBack()" class="top-headings"
+                style="font-family: Helvetica Neue;font-size: x-large; float: right; margin-top: -32px; cursor: pointer;">
+                <a style="color: green; font-size: 18px; font-weight: 600;">VIEW ALL</a>
+            </h3>
+        </div> -->
+        <owl-carousel-o [options]="customOptionCard">
+            <ng-container *ngFor="let slide of merchantList  | limitLength:8">
+                <ng-template carouselSlide [id]="slide.id">
+                    <div class="thumbnail card card-slider img-length">
+                        <img [src]="slide.logo" [alt]="slide.alt" [title]="slide.title" width="50" height="90">
+                        <div class="title">
+                            <h5 style="color: rgb(30, 32, 30); font-weight: 700; text-align: center; font-size: 12px;">
+                                {{slide.name}}</h5>
+                        </div>
+                        <div class="hc-cb-info cb-text">
+                            <div class="coupon-code cb-text">
+                                <span>Upto {{slide?.discount ?? '69'}}%</span>
+                                <button (click)="getHishCashBack()" type="button" class="coupon-hcode"
+                                    data-toggle="modal" data-target=".bd-example-modal-lg-product-1">
+                                    <span class="getcode">Actived</span>
+                                    <span class="hcode">{{slide.couponcode}}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </ng-template>
+
+            </ng-container>
+
+        </owl-carousel-o>
+    </div>
+</div>
+
+
+
+
+<!-- 
+<section style="margin-top: 2%;" class="recent-pro-2">
+    <div class="container-fluid custom-width">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title-center text-left">
+                    <h2 style="background-color: white;" class="title pl-0">LOOKING FOR MORE OFFERS
+                    </h2>
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-xl-12">
+                <div class="block-content">
+                    <div class="sc-blocks">
+                        <div class="sc-block left">
+                            <h3 class="sc-heading">BANK OFFERS</h3>
+                            <div class="sc-offer-block">
+                                <div class="sc-offer"><a href="/sbi-bank-offers" rel="noindex"
+                                        data-gtm-action="Bank click" data-gtm-label="SBI Bank"
+                                        aria-label="SBI Bank"><img alt="SBI Bank"
+                                            src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/special_collection/mweb/a7e34cbe81b1f95689c2906e49290fab/collection_icon-100x200.jpg"
+                                            data-lazy-src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/special_collection/mweb/a7e34cbe81b1f95689c2906e49290fab/collection_icon-100x200.jpg"></a>
+                                </div>
+                                <div class="sc-offer"><a href="/icici-bank-offers" rel="noindex"
+                                        data-gtm-action="Bank click" data-gtm-label="ICICI Bank"
+                                        aria-label="ICICI Bank"><img alt="ICICI Bank"
+                                            src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/010646d61c6ccae84983965b23c40b52/collection_icon-100x200.jpg?292399"
+                                            data-lazy-src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/010646d61c6ccae84983965b23c40b52/collection_icon-100x200.jpg?292399"></a>
+                                </div>
+                                <div class="sc-offer"><a href="/citi-bank-offers" rel="noindex"
+                                        data-gtm-action="Bank click" data-gtm-label="CITI Bank"
+                                        aria-label="CITI Bank"><img alt="CITI Bank"
+                                            src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/b2cb7b2642a5f7dee566a131a60cca0c/collection_icon-100x200.jpg?724480"
+                                            data-lazy-src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/b2cb7b2642a5f7dee566a131a60cca0c/collection_icon-100x200.jpg?724480"></a>
+                                </div>
+                                <div class="sc-offer"><a href="/axis-bank-offers" rel="noindex"
+                                        data-gtm-action="Bank click" data-gtm-label="AXIS Bank"
+                                        aria-label="AXIS Bank"><img alt="AXIS Bank"
+                                            src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/7444ab7b282e3aa0f5e54d4afc3209a9/collection_icon-100x200.jpg?595505"
+                                            data-lazy-src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/7444ab7b282e3aa0f5e54d4afc3209a9/collection_icon-100x200.jpg?595505"></a>
+                                </div>
+                                <div class="sc-offer"><a href="/hsbc-bank-offers" rel="noindex"
+                                        data-gtm-action="Bank click" data-gtm-label="HSBC Bank"
+                                        aria-label="HSBC Bank"><img alt="HSBC Bank"
+                                            src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/d6c2327fbc5b3e36833c6ef21e008ee4/collection_icon-100x200.jpg?148707"
+                                            data-lazy-src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/d6c2327fbc5b3e36833c6ef21e008ee4/collection_icon-100x200.jpg?148707"></a>
+                                </div>
+                                <div class="sc-offer"><a href="/kotak-bank-offers" rel="noindex"
+                                        data-gtm-action="Bank click" data-gtm-label="KOTAK Bank"
+                                        aria-label="KOTAK Bank"><img alt="KOTAK Bank"
+                                            src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/729cb40a1d76a0367d97f5d7aaf4ed78/collection_icon-100x200.jpg?94424"
+                                            data-lazy-src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/729cb40a1d76a0367d97f5d7aaf4ed78/collection_icon-100x200.jpg?94424"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sc-block left">
+                            <h3 class="sc-heading">Wallet OFFERS</h3>
+                            <div class="sc-offer-block">
+                                <div class="sc-offer"><a href="/sbi-bank-offers" rel="noindex"
+                                        data-gtm-action="Bank click" data-gtm-label="SBI Bank"
+                                        aria-label="SBI Bank"><img alt="SBI Bank"
+                                            src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/special_collection/mweb/a7e34cbe81b1f95689c2906e49290fab/collection_icon-100x200.jpg"
+                                            data-lazy-src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/special_collection/mweb/a7e34cbe81b1f95689c2906e49290fab/collection_icon-100x200.jpg"></a>
+                                </div>
+                                <div class="sc-offer"><a href="/icici-bank-offers" rel="noindex"
+                                        data-gtm-action="Bank click" data-gtm-label="ICICI Bank"
+                                        aria-label="ICICI Bank"><img alt="ICICI Bank"
+                                            src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/010646d61c6ccae84983965b23c40b52/collection_icon-100x200.jpg?292399"
+                                            data-lazy-src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/010646d61c6ccae84983965b23c40b52/collection_icon-100x200.jpg?292399"></a>
+                                </div>
+                                <div class="sc-offer"><a href="/citi-bank-offers" rel="noindex"
+                                        data-gtm-action="Bank click" data-gtm-label="CITI Bank"
+                                        aria-label="CITI Bank"><img alt="CITI Bank"
+                                            src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/b2cb7b2642a5f7dee566a131a60cca0c/collection_icon-100x200.jpg?724480"
+                                            data-lazy-src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/b2cb7b2642a5f7dee566a131a60cca0c/collection_icon-100x200.jpg?724480"></a>
+                                </div>
+                                <div class="sc-offer"><a href="/axis-bank-offers" rel="noindex"
+                                        data-gtm-action="Bank click" data-gtm-label="AXIS Bank"
+                                        aria-label="AXIS Bank"><img alt="AXIS Bank"
+                                            src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/7444ab7b282e3aa0f5e54d4afc3209a9/collection_icon-100x200.jpg?595505"
+                                            data-lazy-src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/7444ab7b282e3aa0f5e54d4afc3209a9/collection_icon-100x200.jpg?595505"></a>
+                                </div>
+                                <div class="sc-offer"><a href="/hsbc-bank-offers" rel="noindex"
+                                        data-gtm-action="Bank click" data-gtm-label="HSBC Bank"
+                                        aria-label="HSBC Bank"><img alt="HSBC Bank"
+                                            src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/d6c2327fbc5b3e36833c6ef21e008ee4/collection_icon-100x200.jpg?148707"
+                                            data-lazy-src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/d6c2327fbc5b3e36833c6ef21e008ee4/collection_icon-100x200.jpg?148707"></a>
+                                </div>
+                                <div class="sc-offer"><a href="/kotak-bank-offers" rel="noindex"
+                                        data-gtm-action="Bank click" data-gtm-label="KOTAK Bank"
+                                        aria-label="KOTAK Bank"><img alt="KOTAK Bank"
+                                            src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/729cb40a1d76a0367d97f5d7aaf4ed78/collection_icon-100x200.jpg?94424"
+                                            data-lazy-src="https://s3-ap-southeast-1.amazonaws.com/cashback-static/sitespecific/in/special_collection/mweb/729cb40a1d76a0367d97f5d7aaf4ed78/collection_icon-100x200.jpg?94424"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
+
+
+
+
+<!-- =========================
+        Customer  review section
+    ============================== -->
+<section class="wd-service">
+    <div class="container-fluid custom-width">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title-center text-left">
+                    <h2 style="background-color: white;" class="title pl-0">HEAR IT FROM OUR CUSTOMERS
+                    </h2>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4 col-xl-4">
+                <ul class="list-unstyled">
+                    <li class="media">
+                        <div class="media-body">
+                            <div class="rating">
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                            </div>
+                            <p style="width: 100%; height: 250%;">My favourite app that gave me extra discounts and cashback on brands like Amazon,
+                                Flipkart & Myntra. Using this app for a long time and I am really enjoying its features.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12 col-lg-4 col-xl-4">
+                <ul class="list-unstyled">
+                    <li class="media">
+                        <div class="media-body">
+                            <h5 class="wd-service-title mt-0 mb-1">
+                                <div class="rating">
+                                    <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                </div>
+                            </h5>
+                            <p style="width: 100%; height: 250%;">Thank You, FilDeal, for providing a cashback of ₹1549 on the Dell laptop order.
+                                I must say you are truly a genuine cashback website. This review is from the heart. You
+                                rock!</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12 col-lg-4 col-xl-4">
+                <ul class="list-unstyled">
+                    <li class="media">
+                        <div class="media-body">
+                            <div class="rating">
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                            </div>
+                            <p style="width: 100%; height: 250%;">Lot of options variety easy to choose thank you! last week I redeemed my FilDeal
+                                balance to Amazon.
+                                They gave full instructions about to redeem the amount.Thank you FilDeal </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+      subscribe the coupon offers
+    ============================== -->
+<section style="margin-top: 3%;" id="call-to-action" class="d-flex align-items-center">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-12 col-md-6">
+                <h2 class="sub-text">Subscribe to get the best deals right in your email</h2>
+            </div>
+            <div class="col-12 col-md-6 text-right">
+                <form [formGroup]="subscribeForm">
+                    <div class="call-to-action-buy-now">
+                        <input class="sub-input" id="emailHome" formControlName="name"
+                            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+                            placeholder="Enter your email address">
+                        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                            <div *ngIf="f['name'].errors['email']">Email is invalid</div>
+                            <div *ngIf="f['name'].errors['pattern']">Email is invalid pattern</div>
+                        </div>
+                        <!-- By Theme -->
+                        <!-- <a style="color: white;" (click)="addCustmrSubscribe()" class="btn btn-primary wd-shop-btn">
+                            Subscribe <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </a> -->
+                        <button type="submit" (click)="addCustmrSubscribe()" class="btn btn-primary wd-shop-btn">Join
+                            us</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer-full-social">
+    <div class="container custom-width">
+        <div style="justify-content: center;" class="row">
+            <div class="col-6 col-sm-6 col-md-4 col-xl-2">
+                <div class="sin-fw-social fb-fw">
+
+                    <a href="https://www.facebook.com/people/Fil-Deal/pfbid0zbxtAQxEQpNEUUjRNvsvdn68raVNd9rnTUA9B6G5fcCoVqN5NypLuQgXXMnK5sj2l/?mibextid=ZbWKwL"
+                        target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a>
+
+                </div>
+            </div>
+
+
+
+            <div class="col-6 col-sm-6 col-md-4 col-xl-2">
+                <div class="sin-fw-social ins-fw">
+                    <a href="https://www.instagram.com/fildeal_2024/?igsh=YTljMDVuNXV0bW13" target="_blank"><i
+                            class="fa fa-instagram" aria-hidden="true"></i>Instagram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<!-- Demo header-->
+<section class="py-5 header">
+    <div class="container py-4">
+        <!-- ========= frequency asked question ========== -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title-center text-left">
+                    <h2 style="background-color: white;" class="title pl-0">FREQUENTLY ASKED QUESTIONS
+                    </h2>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <!-- Tabs nav -->
+                <div class="nav flex-column nav-pills nav-pills-custom" id="v-pills-tab" role="tablist"
+                    aria-orientation="vertical">
+                    <a class="nav-link mb-3 p-3 shadow active" id="v-pills-home-tab" data-toggle="pill"
+                        href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                        <span class="font-weight-bold small text-uppercase">What is FilDeal?</span></a>
+                    <a class="nav-link mb-3 p-3 shadow" id="v-pills-profile-tab" data-toggle="pill"
+                        href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                        <span class="font-weight-bold small text-uppercase">What are the benefits of using fildeal?
+                        </span></a>
+                    <a class="nav-link mb-3 p-3 shadow" id="v-pills-messages-tab" data-toggle="pill"
+                        href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                        <span class="font-weight-bold small text-uppercase">What is referral bonus?</span></a>
+                    <a class="nav-link mb-3 p-3 shadow" id="v-pills-settings-tab" data-toggle="pill"
+                        href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                        <span class="font-weight-bold small text-uppercase">Where does Cashback money come from?</span></a>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <!-- Tabs content -->
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-home" role="tabpanel"
+                        aria-labelledby="v-pills-home-tab">
+                        <h4 class="mb-4">What is FilDeal?</h4>
+                        <p> At Fildeal, users can access a variety of coupons and deals to save money on their online
+                            purchases. Our platform features discounts and offers from a diverse range of online brands,
+                            including popular stores like Flipkart, Amazon, MakeMyTrip, PayTM, BookMyShow, and many
+                            others. With our extensive selection of deals, users can find savings opportunities across
+                            various categories and enjoy discounts from their favorite brands."
+                        </p> <br>
+                        <p class="text-muted mb-2">
+                            *Visit Fildeal and browse through the available stores and deals. <br>
+                            *Click on "Get Store" for the offer you're interested in. <br>
+                            *Copy the coupon code and click on go to store<br>
+                            *Wait to be redirected to the respective store's website.<br>
+                            *Apply the coupon, complete your shopping and payment on the store's site..</p>
+                    </div>
+
+                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-profile" role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab">
+                        <h4 class="mb-4">What are the benefits of using fildeal?</h4>
+                        <p class=" text-muted mb-2"> Discounts on Desired Items &nbsp; :- &nbsp; Fildeal coupons
+                            frequently offer discounts on specific products or services, enabling customers to purchase
+                            items they desire or require at a reduced price. This allows shoppers to save money while
+                            still obtaining the goods or services they want.
+                            .</p>
+                        <p>*Ease of Use &nbsp;:- &nbsp; With Fildeal coupons, customers can easily locate and apply
+                            discounts when shopping online. This streamlined process simplifies the savings experience,
+                            making it more convenient for users to take advantage of available deals and enjoy reduced
+                            prices on their purchases.</p>
+                        <p>*Variety of Savings &nbsp :- &nbsp; Fildeal offers a wide range of coupons covering various
+                            categories, ensuring that customers can find discounts on a diverse selection of products
+                            and services. Whether shopping for electronics, clothing, travel, or dining, there are
+                            savings opportunities available for different needs and preferences.
+                        </p>
+                        <p>
+                            *Enhanced Affordability &nbsp;:- &nbsp; By utilizing Fildeal coupons, customers can stretch
+                            their budgets further and make their money go a longer way. The reduced prices offered
+                            through these coupons enable shoppers to access quality products and services without
+                            overspending, ultimately enhancing their overall affordability.
+
+                        </p>
+                        <p>
+                            *Convenient Online Shopping &nbsp;:- &nbsp; Fildeal coupons facilitate a seamless online
+                            shopping experience by providing discounts directly applicable during the checkout process.
+                            This convenience encourages customers to explore and utilize available coupons, optimizing
+                            their savings while enjoying the convenience of online shopping.
+
+                        </p>
+                    </div>
+
+                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-messages" role="tabpanel"
+                        aria-labelledby="v-pills-messages-tab">
+                        <h4 class=" mb-4">What is referral bonus?</h4>
+                        <p class="text-muted mb-2"> Referral bonus at Fildeal rewards existing customers for inviting
+                            friends via social media or email. When friends join or make a purchase using the referral
+                            link, both the referrer and new customer may receive a bonus. This encourages more people to
+                            join and shop on the platform. Bonuses can vary and are given as a thank-you for spreading
+                            the word about Fildeal. It's a win-win for everyone involved, boosting user engagement and
+                            loyalty..</p>
+                    </div>
+
+                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-settings" role="tabpanel"
+                        aria-labelledby="v-pills-settings-tab">
+                        <h4 class="mb-4">Where does Cashback money come from? </h4>
+                        <p class="text-muted mb-2">when you shop via us on our partner stores, we get paid a
+                            "commission" by the store. We give 70-100% of this commission to you as cashback.The store
+                            pays & thanks us for getting a customer and we pay & thank you for choosing us.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<!-- modal popup for get coupn code -->
+<div class="modal fade bd-example-modal-lg-product-1" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-hidden="true">
+    <div class="coupon-modal modal-dialog modal-dialog-centered" role="document">
+        <div *ngFor="let x of RechareBillDatList" class="modal-content">
+            <div class="modal-header cd-modal-header">
+                <img src="{{x.merchant_logo}}" alt="store_logo" width="100" height="80">
+                <p class="deal-activity title">{{x.title}}</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="coupon-modal-body">
+                <div class="coupon-show">
+                    <p style="font-weight: bold; font-size: 14px;">{{x?.coupon_code || 'No Coupon Code Required' }} <i
+                            style="color: green;cursor:pointer" class="fa fa-copy"></i></p>
+                    <div class="offer-meta-txt">
+                        <div class="activate-wrapper">
+                            <img alt="verified-icon" width="30" src="assets/img/verified_icon.png"
+                                class="verified-icon">
+                            <span>FilDeal Activated</span>
+                        </div>
+                    </div>
+                    <div class="store-cta load-offer-btn outlink">
+                        <a href="{{x.affiliate_link}}" target="_blank">
+                            <div class="outlink-icon">
+                            </div>
+                            <span class="store-link " gtm-trigger="outclick">Go To <span class="store-link"
+                                    data-type="html" data-model="storeName">{{x.merchant_name}}</span> Website</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="coupon-feedback">
+                    <div class="smile-wrapper">
+                        <ul class="smile">
+                            <li><a href="#"><i class="fa fa-thumbs-o-up"></i></a></li>
+                            <li><a href="#"><i class="fa fa-thumbs-o-down "></i></a></li>
+                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                        </ul>
+                        <p>Did this help you save money?</p>
+                    </div>
+                    <a href="{{x.affiliate_link}}" target="_blank" class="mod-store-btn">Go to Store</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="mf-left"> <i class="fa fa-signal" aria-hidden="true"></i>17548 People View This</div>
+                <div class="mf-right">
+                    <ul class="coupon-soc">
+                        <li><a href="https://www.facebook.com/people/Fil-Deal/pfbid0zbxtAQxEQpNEUUjRNvsvdn68raVNd9rnTUA9B6G5fcCoVqN5NypLuQgXXMnK5sj2l/?mibextid=ZbWKwL"
+                                target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/fildeal_2024/?igsh=YTljMDVuNXV0bW13" target="_blank"><i
+                                    class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+<div class="modal fade bd-example-modal-lg-product-1" id="exampleModalCenter" tabindex="-1" role="dialog"
+aria-hidden="true">
+<div class="coupon-modal modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <p>Scribble Education Store: Save Up To 50% + Free Shipping</p>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="coupon-modal-body">
+            <p class="deal-activity">DEAL ACTIVATED, NO COUPON CODE REQUIRED!</p>
+            <div class="coupon-show">
+                <p>msejdwsdisdfllkfosk</p>
+                <a href="#">http://www.themeim.com/demo/blurb/</a>
+            </div>
+            <div class="coupon-feedback">
+                <div class="smile-wrapper">
+                    <ul class="smile">
+                        <li><a href="#"><i class="fa fa-smile-o"></i></a></li>
+                        <li><a href="#"><i class="fa fa-smile-o"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                    </ul>
+                    <p>Did it work</p>
+                </div>
+                <a href="#" class="mod-store-btn">Go to Store</a>
+            </div>
+            <div class="coupon-accordion">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="coupon-card-btn" data-toggle="collapse"
+                                    data-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">Coupon details</button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#accordion">
+                            <div class="card-body coupon-card-body">
+                                <h6>Copon Details :</h6>
+                                <p>Enter this code at chackout get 40% discount for all printing and typesetting
+                                    industry. Lorem Ipsum has been the industry's standard dummy text ever since
+                                    the 1500s</p>
+                                <span>Expired Date : 01 / 02 / 2018</span>
+                                <span>Submitted : A week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="mf-left"> <i class="fa fa-signal" aria-hidden="true"></i>17548 People View This</div>
+            <div class="mf-right">
+                <ul class="coupon-soc">
+                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div> -->

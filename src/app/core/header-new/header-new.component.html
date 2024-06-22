@@ -1,0 +1,910 @@
+<div *ngIf="loaderShow" class="preloader"></div>
+
+<section id="wd-header" class="dark-header">
+    <div class="container-fluid custom-width">
+        <div class="row">
+            <div class="col-md-12 col-lg-3 col-xl-3 text-center second-home-main-logo">
+                <a href="index.html"><img src="../../../assets/img/filLogo.png" alt="Logo"></a>
+            </div>
+            <div class="col-md-6 col-lg-6 slider-search-section d-none d-lg-block">
+                <div class="input-group">
+                    <div class="input-group-btn datcon">
+                        <div class="dropdown-menu wd-dropdown-menu dropdown-menu-con">
+                            <div class="search-category">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div *ngFor="let x of topStoreData | filter:term">
+                                            <div class="content-excerpt">
+                                            </div>
+                                            <div class="compare-btn">
+                                                <ul>
+                                                    <li style="float: left; padding: 1%; cursor: pointer;">
+                                                        <a class="btn btn-primary"
+                                                            (click)="getMechtsTopStore(x.id, x.name)">{{x.name}}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" [(ngModel)]="term" class="form-control input-search-box"
+                        placeholder="Enter your search key stores ..." data-toggle="dropdown" aria-hidden="true">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary wd-search-btn" type="button"><i class="fa fa-search"
+                                aria-hidden="true"></i></button>
+                    </span>
+                </div>
+            </div>
+            <div *ngIf="!showLoginModal" class="col-6 col-sm-9 col-md-6  col-lg-3 col-xl-3">
+                <div class="language-and-currency-btn">
+                    <i class="fa fa-user-circle-o" style="font-size:22px;color:rgb(231, 216, 216)"> {{userLogin}} </i>
+                    <!-- <div class="chip">
+                        <img src="../../../assets/img/img_avatar.png" alt="Person">
+                        {{userLogin}}
+                      </div> -->
+
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group" role="group">
+                            <p id="btnGroupDrop3" type="button" class="wd-btn-country dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            </p>
+                            <div class="dropdown-menu wd-btn-country-list" aria-labelledby="btnGroupDrop3">
+                                <a class="dropdown-item" href="#"><i class='fa fa-user-circle'
+                                        style='font-size:24px'></i>
+                                    {{userLogin}}</a>
+                                <a class="dropdown-item" href="#" (click)="logOut()"><i
+                                        class="fa fa-solid fa-power-off"></i>
+                                    &nbsp; LogOut</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="showLoginModal" class="col-md-6 col-lg-3  col-xl-3 text-right header-signup">
+                <button class="btn btn-primary my-account d-none d-lg-block" data-toggle="modal"
+                    data-target=".bd-example-modal-lg2">
+                    <i style="font-size: 25px;" class="fa fa-user-circle-o"></i>&nbsp; <span>You &nbsp;</span> <sub><i
+                            class="fa fa-solid fa-chevron-down"></i></sub>
+                </button>
+                <div *ngIf="showLoginModal" class="modal fade bd-example-modal-lg2" tabindex="-1" id="exampleModal"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="container">
+                                <div class="row text-left">
+                                    <div class="col-md-12 p0">
+                                        <div class="modal-tab-section wd-modal-tabs">
+                                            <ul class="nav nav-tabs wd-modal-tab-menu text-center" id="myTab"
+                                                role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="login-tab" data-toggle="tab"
+                                                        href="#login" role="tab" aria-controls="login"
+                                                        aria-expanded="true">Login</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="sign-up-tab" data-toggle="tab"
+                                                        href="#sign-up" role="tab" aria-controls="sign-up">Sign
+                                                        up</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="login" role="tabpanel"
+                                                    aria-labelledby="login-tab">
+
+                                                    <div class="row">
+                                                        <div class="col-md-6 p0 brand-description-area">
+                                                            <img src="../../../assets/img/login1.png" class="img-fluid"
+                                                                alt="">
+                                                            <div class="brand-description">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 col-lg-6 p0">
+                                                            <div class="login-section text-center">
+                                                                <div class="login-form text-left">
+                                                                    <form [formGroup]="loginForm"
+                                                                        (ngSubmit)="loginOnSubmit()">
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="exampleInputEmaillogin">Email</label>
+                                                                            <input type="text" formControlName="email"
+                                                                                placeholder="Enter Email"
+                                                                                class="form-control"
+                                                                                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                                                                                value="emailOtp" />
+                                                                            <div *ngIf="submitted && f['email'].errors"
+                                                                                class="invalid-feedback">
+                                                                                <div
+                                                                                    *ngIf="f['email'].errors['required']">
+                                                                                    Email is required</div>
+                                                                                <div *ngIf="f['email'].errors['email']">
+                                                                                    Email is invalid</div>
+                                                                                <div
+                                                                                    *ngIf="f['email'].errors['pattern']">
+                                                                                    Email is invalid pattern</div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="exampleInputPasswordlogin">Password</label>
+                                                                            <input
+                                                                                [type]="showPassword ? 'text' : 'password'"
+                                                                                formControlName="pwd"
+                                                                                placeholder="** ***"
+                                                                                class="form-control"
+                                                                                [ngClass]="{ 'is-invalid': submitted && f['pwd'].errors }" />
+                                                                            <div *ngIf="submitted && f['pwd'].errors"
+                                                                                class="invalid-feedback">
+                                                                                <div
+                                                                                    *ngIf="f['pwd'].errors['required']">
+                                                                                    Password is required</div>
+
+                                                                            </div>
+                                                                            <span><a (click)="forgotShow()"
+                                                                                    style="color: rgb(120, 120, 244); cursor: pointer;"
+                                                                                    data-toggle="modal"
+                                                                                    data-target="#exampleModalCenter">forgot?password</a></span>
+                                                                        </div>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary wd-login-btn">
+                                                                            LOGIN
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="tab-pane fade" id="sign-up" role="tabpanel"
+                                                    aria-labelledby="sign-up-tab">
+
+                                                    <div class="row">
+                                                        <div class="col-md-6 p0 brand-login-section">
+                                                            <img src="../../../assets/img/signup-filDeal.png"
+                                                                class="img-fluid" alt="">
+                                                            <div class="brand-description">
+                                                                <!-- <div class="brand-logo">
+                                                                    <img src="../../../assets/img/si" alt="Logo">
+                                                                </div> -->
+                                                                <div class="modal-description">
+                                                                    <p
+                                                                        style="color: #cd3232; font-size: 18px; font-weight: 600; background-color: black;">
+                                                                        Welcome to FilDeal's - India's Trusted Coupons,
+                                                                        Offers & Cashback Website.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 p0">
+                                                            <div class="sign-up-section text-center">
+                                                                <div class="login-form text-left">
+                                                                    <form [formGroup]="registerForm"
+                                                                        (ngSubmit)="onSubmit()">
+                                                                        <div class="form-group">
+                                                                            <label>First name</label>
+                                                                            <input type="text" class="form-control"
+                                                                                formControlName="name"
+                                                                                placeholder="enter name"
+                                                                                [ngClass]="{'is-invalid': registerSubmited && ff['name'].errors}" />
+                                                                            <div *ngIf="registerSubmited && ff['name'].errors"
+                                                                                class="invalid-feedback">
+                                                                                <div
+                                                                                    *ngIf="ff['name'].errors['required']">
+                                                                                    First Name is required</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label>Last name</label>
+                                                                            <input type="text" class="form-control"
+                                                                                formControlName="lastname"
+                                                                                placeholder="Last Name"
+                                                                                [ngClass]="{'is-invalid': registerSubmited && ff['lastname'].errors}" />
+                                                                            <div *ngIf="registerSubmited && ff['lastname'].errors"
+                                                                                class="invalid-feedback">
+                                                                                <div
+                                                                                    *ngIf="ff['lastname'].errors['required']">
+                                                                                    LastName is required</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label>Mobile
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                formControlName="mobile"
+                                                                                placeholder="Enter Mobile Number"
+                                                                                [ngClass]="{'is-invalid': registerSubmited && ff['mobile'].errors}"
+                                                                                maxLength="10" pattern="\d{10}"
+                                                                                appNoSpecialChars />
+                                                                            <div *ngIf="registerSubmited && ff['mobile'].errors"
+                                                                                class="invalid-feedback">
+                                                                                <div
+                                                                                    *ngIf="ff['mobile'].errors['required']">
+                                                                                    mobile is required
+                                                                                </div>
+                                                                                <!-- <div *ngIf="ff['mobile'].errors['minLength']">
+                                                                                    Mobile number must be at least 10 characters long </div> -->
+                                                                                <div
+                                                                                    *ngIf="registerForm.get('mobile')?.errors?.['minlength']">
+                                                                                    Mobile number must be at least 10
+                                                                                    characters long</div>
+                                                                                <div
+                                                                                    *ngIf="registerForm.get('mobile')?.errors?.['maxlength']">
+                                                                                    Mobile number only exceed 10
+                                                                                    characters</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label>Email</label>
+                                                                            <input type="text" class="form-control"
+                                                                                formControlName="email"
+                                                                                placeholder="Enter you email ..."
+                                                                                [ngClass]="{'is-invalid': registerSubmited && ff['email'].errors}" />
+                                                                            <div *ngIf="registerSubmited && ff['email'].errors"
+                                                                                class="invalid-feedback">
+                                                                                <div
+                                                                                    *ngIf="ff['email'].errors['required']">
+                                                                                    email is required</div>
+                                                                                <div
+                                                                                    *ngIf="registerForm.get('email')?.errors?.['pattern']">
+                                                                                    email validation give correct email
+                                                                                    id</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label>Password</label>
+                                                                            <input type="password" class="form-control"
+                                                                                formControlName="pwd"
+                                                                                placeholder="*** *** ***"
+                                                                                [ngClass]="{'is-invalid': registerSubmited && ff['pwd'].errors}"
+                                                                                maxLength="15" appPasswordValidator />
+                                                                            <div *ngIf="registerSubmited && ff['pwd'].errors"
+                                                                                class="invalid-feedback">
+                                                                                <div
+                                                                                    *ngIf="ff['pwd'].errors['required']">
+                                                                                    password is required</div>
+                                                                                <div
+                                                                                    *ngIf="registerForm.get('pwd')?.errors?.['minlength']">
+                                                                                    min length 4</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary wd-login-btn">
+                                                                            Sign Up
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================
+    Header Section for mobile responsive view menu fildeal
+============================== -->
+<section id="wd-header-2" class="wd-header-nav sticker-nav mob-sticky bg-orange">
+    <div class="container-fluid custom-width">
+        <div class="row">
+            <div class="col-md-8 col-2 col-sm-6 col-md-4 d-block d-lg-none">
+                <div class="accordion-wrapper hide-sm-up">
+                    <a style="color: aliceblue;" class="mobile-open"><i class="fa fa-bars"></i></a>
+                    <!--Mobile Menu start-->
+                    <ul id="mobilemenu" style="background-color:#cff4fc;" class="accordion">
+                        <!-- <li class="mob-logo"><a href="index.html"><img src="img/logo.png" alt=""></a></li>-->
+                        <li #dismissibleElement><a id="close-dismis" class="closeme"><i class="fa fa-times"></i></a>
+                        </li>
+                        <li class="mob-logo"> <a href="index.html"><img src="../../../assets/img/filLogo.png"
+                                    alt="Logo"></a> </li>
+                        <li>
+                            <div class="link">Categories<i class="fa fa-chevron-down"></i></div>
+                            <ul style="cursor: pointer;" class="submenu">
+                                <li><a (click)="getAllCatgry()">Recharge</a></li>
+                                <li><a (click)="getAllCatgry()">Food & Dining</a></li>
+                                <li><a (click)="getAllCatgry()">Fashion & Accessories</a></li>
+                                <li><a (click)="getAllCatgry()">Travel</a></li>
+                                <li><a (click)="getAllCatgry()">Other Categories</a></li>
+                            </ul>
+                        </li>
+                        <li class="out-link">
+                            <a (click)="onSubmitTopStore()">Top Stores</a>
+                        </li>
+                        <li class="out-link"><a class="" (click)="onSubmitBestOffer()">Best Offers</a></li>
+                        <li class="out-link"><a class="" (click)="collectionOffers()">Collections</a></li>
+                        <li *ngIf="showLoginModal" class="out-link"><a (click)="disclose" class="" data-toggle="modal"
+                                data-target=".bd-example-modal-lg2">Login</a></li>
+                    </ul>
+                    <!--Mobile Menu end-->
+                </div>
+            </div><!--Mobile menu end-->
+
+
+            <div style="margin-left: 30%;"
+                class="offset-xl-4 col-md-7 col-lg-9 col-xl-6 header-search-box d-none d-lg-block">
+                <div id="main-menu-2" class="main-menu-desktop no-border main-menu-sh">
+                    <div class="menu-container wd-megamenu text-left">
+                        <div class="menu">
+                            <ul class="wd-megamenu-ul">
+                                <li class="pos-inherit"><a style="cursor: pointer;"
+                                        class="main-menu-list ">Categories</a>
+                                    <ul class="single-dropdown megamenu">
+                                        <li>
+                                            <a class="menu-subtitle">Recharge</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of billRecharge" (click)="getRecharge(x.id, x.name)">
+                                                    <a style="cursor: pointer;" [routerLink]="['/recharge-catgry']"> <i
+                                                            class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{x.name}}</a>
+                                                </li>
+                                            </ul>
+
+                                            <a class="menu-subtitle">Food & Dining</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of catgryFood " (click)="getFood(x.id, x.name)">
+                                                    <a style="cursor: pointer;" [routerLink]="['/foodCatgories']">
+                                                        <i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.name}}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="menu-subtitle">Fashion & Accessories</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of catgryFashion " (click)="getFashion(x.id, x.name)">
+                                                    <a style="cursor: pointer;" [routerLink]="['/fashionCatgories']"><i
+                                                            class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.name | maxlength : 20}}...</a>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+
+                                        <li>
+                                            <a class="menu-subtitle">Travel</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of catgryTravel" (click)="getTravels(x.id, x.name)">
+                                                    <a style="cursor: pointer;" [routerLink]="['/travelsCatgories']"><i
+                                                            class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.name}}</a>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+
+                                        <li>
+                                            <a class="menu-subtitle">Other Categories</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of catgryOtherCatgry"
+                                                    (click)="getOtherCatgry(x.id, x.name)">
+                                                    <a style="cursor: pointer;" [routerLink]="['/othercatergories']"><i
+                                                            class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.name}}</a>
+                                                </li>
+                                            </ul>
+
+                                            <a style="margin-top: 10%; color: #5f5cd5; cursor: pointer;"
+                                                class="menu-subtitle" (click)="getAllCatgry()">View All Categories <i
+                                                    class="fa fa-angle-double-right"></i></a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <li class="pos-inherit">
+                                    <a style="cursor: pointer;" class="main-menu-list ">Top Stores</a>
+                                    <ul style="cursor: pointer;" class="single-dropdown megamenu">
+                                        <li class="sin-logo" *ngFor="let x of topStoreData | maxlength : 20"
+                                            (click)="gettopStoresOffer(x.id, x.name)">
+                                            <div class="row">
+                                                <div class="col-sm-6" (click)="gettopstorecatergories(x.id, x.name)">
+                                                    <a style="cursor: pointer;"><img src="{{x.logo}}" alt="top-logos"
+                                                            width="30" height="30"></a>
+                                                </div>
+                                                <div class="col-sm-6" style="padding: 15px;">
+                                                    <span
+                                                        style="color:#2BA828 !important; font-weight: 500; font-size: 13px;">View
+                                                        More</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li style="float: right !important;">
+                                            <ul class="sub-menu-list">
+                                            </ul>
+                                            <a style="color: #5f5cd5; cursor: pointer;" (click)="getTopStores()"
+                                                class="menu-subtitle">View Other TopStores <i
+                                                    class="fa fa-angle-double-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="pos-inherit">
+                                    <a style="cursor: pointer;" class="main-menu-list ">Best Offers</a>
+                                    <ul class="single-dropdown megamenu">
+                                        <li>
+                                            <a class="menu-subtitle">Mobiles & Tablets</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of mobileBestOfer"
+                                                    (click)="getBestOfferKey(x.merchant_id, x.merchant_name)">
+                                                    <a style="cursor: pointer;"> <i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>
+                                                        {{x.merchant_name}} - <span style="color: green;">{{x.discount |
+                                                            maxlength : 9}}</span></a>
+                                                </li>
+                                            </ul>
+                                            <a href="#" class="menu-subtitle">Beauty & Health</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of beautyBestOfer">
+                                                    <a style="cursor: pointer;"
+                                                        (click)="getBestOfferKey(x.merchant_id, x.merchant_name)"> <i
+                                                            class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{x.merchant_name}} - <span style="color: green;">{{x.discount |
+                                                            maxlength : 9}}</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="menu-subtitle">Food & Dining</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of foodBestOfer">
+                                                    <a style="cursor: pointer;"
+                                                        (click)="getBestOfferKey(x.merchant_id, x.merchant_name)"> <i
+                                                            class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{x.merchant_name}} - <span style="color: green;">{{x.discount |
+                                                            maxlength : 9}}</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                            <a *ngIf="computerBestOfer.length !=0" class="menu-subtitle">Computers &
+                                                laptos </a>
+                                            <ul *ngIf="computerBestOfer.length !=0" class="sub-menu-list">
+                                                <li *ngFor="let x of computerBestOfer">
+                                                    <a style="cursor: pointer;"
+                                                        (click)="getBestOfferKey(x.merchant_id, x.merchant_name)"> <i
+                                                            class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{x.merchant_name}} - <span style="color: green;">{{x.discount |
+                                                            maxlength : 12}}</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                            <a href="#" class="menu-subtitle">Fashion</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of fashionBestOfer">
+                                                    <a style="cursor: pointer;"
+                                                        (click)="getBestOfferKey(x.merchant_id, x.merchant_name)"> <i
+                                                            class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{x.merchant_name }} - <span style="color: green;">{{x.discount
+                                                            | maxlength : 18}}</span></a>
+                                                </li>
+
+                                            </ul>
+
+
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="menu-subtitle">Tv Audio & Video</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of movieBestOfer">
+                                                    <a style="cursor: pointer;"
+                                                        (click)="getBestOfferKey(x.merchant_id, x.merchant_name)"> <i
+                                                            class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{x.merchant_name}} - <span style="color: green;">{{x.discount |
+                                                            maxlength : 18}}</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+
+
+                                            <a href="#" class="menu-subtitle">Flowers Cakes And Gifts</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of  furetinerBestOfer">
+                                                    <a style="cursor: pointer;"
+                                                        (click)="getBestOfferKey(x.merchant_id, x.merchant_name)"> <i
+                                                            class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{x.merchant_name}} - <span style="color: green;">{{x.discount |
+                                                            maxlength : 9}}</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="menu-subtitle">Decor and Furniture</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of flowersBestOfer">
+                                                    <a style="cursor: pointer;"
+                                                        (click)="getBestOfferKey(x.merchant_id, x.merchant_name)"> <i
+                                                            class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{x.merchant_name | maxlength:8}}.. - <span
+                                                            style="color: green;">{{x.discount |
+                                                            maxlength : 9}}</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+
+                                            <a href="#" class="menu-subtitle">Gaming </a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of gamingBestOfer">
+                                                    <a (click)="getBestOfferKey(x.merchant_id, x.merchant_name)"> <i
+                                                            class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{x.merchant_name}} - <span style="color: green;">{{x.discount |
+                                                            maxlength : 9}}</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+
+                                            <a style="cursor: pointer;" (click)="viewBestOffers()"
+                                                style="margin-top: 10%; color: #5f5cd5; cursor:pointer"
+                                                class="menu-subtitle">View All
+                                                Best Offers <i class="fa fa-angle-double-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+
+                                <li style="cursor: pointer;" class="pos-inherit"><a
+                                        class="main-menu-list ">Collections</a>
+                                    <ul class="single-dropdown megamenu">
+                                        <li>
+                                            <a class="menu-subtitle">Mega Sale</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of saleslist | maxlength : 6">
+                                                    <a style="cursor: pointer;"
+                                                        (click)="getCollection(x.merchant_id, x.merchant_name)"> <i
+                                                            class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{x.merchant_name}}</a>
+                                                    <span style="color: green;">{{x.discount | maxlength : 9}}</span>
+                                                </li>
+                                            </ul>
+
+                                            <a href="#" class="menu-subtitle">Wallet</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of wallet | maxlength : 6">
+                                                    <a (click)="getCollection(x.merchant_id, x.merchant_name)">
+                                                        <i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.merchant_name}}</a>
+                                                    <span style="color: green;">{{x.discount | maxlength : 9}}</span>
+                                                </li>
+                                            </ul>
+
+
+                                        </li>
+                                        <li>
+
+                                            <a href="#" class="menu-subtitle">Festival</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of festivallist | maxlength : 6">
+                                                    <a style="cursor: pointer;"
+                                                        (click)="getCollection(x.merchant_id, x.merchant_name)"><i
+                                                            class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.merchant_name}}</a>
+                                                    <span style="color: green;">{{x.discount | maxlength : 9}}</span>
+                                                </li>
+                                            </ul>
+
+                                            <a href="#" class="menu-subtitle">Bank</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of bankSale | maxlength : 10">
+                                                    <a (click)="getCollection(x.merchant_id, x.merchant_name)"><i
+                                                            class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.merchant_name}}</a>
+                                                    <span style="color: green;">{{x.discount | maxlength : 9}}</span>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+
+                                        <li>
+                                            <a href="#" class="menu-subtitle">Specials</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of speciallist | maxlength : 12">
+                                                    <a style="cursor: pointer;"
+                                                        (click)="getCollection(x.merchant_id, x.merchant_name)"><i
+                                                            class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.merchant_name}}</a>
+                                                    <span style="color: green;">{{x.discount | maxlength : 9}}</span>
+                                                </li>
+                                            </ul>
+
+
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="menu-subtitle">Specials Promotions</a>
+                                            <ul class="sub-menu-list">
+                                                <li *ngFor="let x of promotionlist | maxlength : 12">
+                                                    <a style="cursor: pointer;"
+                                                        (click)="getCollection(x.merchant_id, x.merchant_name)"><i
+                                                            class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i>{{x.merchant_name}}</a>
+                                                    <span style="color: green;">{{x.discount | maxlength : 9}}</span>
+                                                </li>
+                                            </ul>
+
+                                            <!-- <a style="margin-top: 10%; color: #5f5cd5;" href="#"
+                                                class="menu-subtitle">View Other Collections <i
+                                                    class="fa fa-angle-double-right"></i></a> -->
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <!-- <li style="cursor: pointer;" routerLink="/share&Earn"><a class="main-menu-list">Share &
+                                        Earn <sup style="color: orange;">New</sup></a>
+
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10 col-sm-6 col-md-4 col-lg-2 col-xl-2 text-right">
+                <!-- =========================
+                         Cart Out 
+                    ============================== -->
+
+                <div class="header-cart">
+                    <a href="coupon.html" class="coupon-save">
+                        <!-- <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <span class="count">5</span> -->
+                        <div class="notice-board">
+                            <a href="#"><img src="../../../assets/img/no" alt=""></a>
+                        </div>
+                    </a>
+
+
+                    <div class="dropdown wd-compare-btn">
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                            <div class="wd-item-list">
+                                <div class="media">
+                                    <img class="d-flex mr-3" src="img/cart-img-1.jpg" alt="cart-img">
+                                    <div class="media-body">
+                                        <h6 class="mt-0 list-group-title">Voyage Yoga Bag</h6>
+                                        <div class="rating">
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                        </div>
+                                        <div class="cart-price">$59</div>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <img class="d-flex mr-3" src="img/cart-img-2.jpg" alt="cart-img">
+                                    <div class="media-body">
+                                        <h6 class="mt-0 list-group-title">Voyage Yoga Bag</h6>
+                                        <div class="rating">
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                        </div>
+                                        <div class="cart-price">$59</div>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <img class="d-flex mr-3" src="img/cart-img-1.jpg" alt="cart-img">
+                                    <div class="media-body">
+                                        <h6 class="mt-0 list-group-title">Voyage Yoga Bag</h6>
+                                        <div class="rating">
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                        </div>
+                                        <div class="cart-price">$59</div>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <img class="d-flex mr-3" src="img/cart-img-2.jpg" alt="cart-img">
+                                    <div class="media-body">
+                                        <h6 class="mt-0 list-group-title">Voyage Yoga Bag</h6>
+                                        <div class="rating">
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                        </div>
+                                        <div class="cart-price">$59</div>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <img class="d-flex mr-3" src="img/cart-img-1.jpg" alt="cart-img">
+                                    <div class="media-body">
+                                        <h6 class="mt-0 list-group-title">Voyage Yoga Bag</h6>
+                                        <div class="rating">
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                        </div>
+                                        <div class="cart-price">$59</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media text-center">
+                                <a href="compare-products.html" class="btn btn-primary go-compare-page">Compare
+                                    <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="modal fade bd-example-modal-lg2" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div *ngIf="verfitShow" class="modal-dialog modal-dialog-centered " role="document">
+        <div style="margin-top:5px;" class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Forgot Password</h5>
+                <button (click)="signupFormForgt()" type="button" class="close" id="close-dismisForgt"
+                    data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form [formGroup]="forgotForm">
+                <div class="modal-body">
+                    <p style="font-size: 12px; color: rgb(243, 53, 53); margin-top: -2%;">Please enter your Mobile
+                        Number and we will send you a OTP</p>
+                    <div style="margin-top: -1%;" class="login-form text-left">
+                        <div class="form-group">
+                            <label for="email">Mobile</label>
+                            <input type="text" formControlName="mobileForgtOtp" class="form-control"
+                                placeholder="mobile"
+                                [ngClass]="{'is-invalid': submittedForgot && forgotF['mobileForgtOtp'].errors}"
+                                minLength="10" maxLength="10" pattern="\d{10}" appNoSpecialChars>
+                            <div *ngIf="submittedForgot && forgotF['mobileForgtOtp'].errors" class="invalid-feedback">
+                                <div *ngIf="forgotForm.get('mobileForgtOtp')?.errors?.['required']">
+                                    Mobile number required
+                                </div>
+                                <div *ngIf="forgotForm.get('mobileForgtOtp')?.errors?.['minlength']">
+                                    Mobile number must be at least 10</div>
+                                <div *ngIf="forgotForm.get('mobileForgtOtp')?.errors?.['maxlength']"> Mobile number only
+                                    exceed 10 characters</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center;" class="form-group">
+                        <button type="submit" class="btn btn-danger wd-login-btn" (click)="forgotSubmitOtp()">
+                            VERIFY
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div style="background-color:#e3e3e389; justify-content: center;" class="modal-header">
+                <span style="text-align: center; font-size: 12px;" class="modal-title" id="exampleModalLongTitle">New to
+                    FilDeal? <a (click)="signupFormForgt()">Sign Up</a> </span>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="forgotpModel" class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="forgotpModelExample">
+
+            <body style="border: 2px solid #cd3232;" class="container-fluid d-block">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 col-lg-4 con-verfit">
+                        <div class="card bg-white mb-5 mt-5 border-0"
+                            style="box-shadow: 0 12px 15px rgba(0, 0, 0, 0.02);">
+                            <div class="card-body p-5 text-center">
+                                <h4>Verify OTP</h4>
+                                <p style="color: #cd3232;">Your code was sent to you via Phone</p>
+                                <form [formGroup]="loginOtpForm">
+                                    <div class="otp-field mb-4">
+                                        <input type="number" formControlName="otp" name="digit1"
+                                            [(ngModel)]="otp.digit1" maxlength="1" (keyup)="moveToNext($event, 2)"
+                                            value="otp1" />
+                                        <input type="number" formControlName="otp" name="digit2"
+                                            [(ngModel)]="otp.digit2" maxlength="1" (keyup)="moveToNext($event, 3)"
+                                            value="otp2" />
+                                        <input type="number" formControlName="otp" name="digit3"
+                                            [(ngModel)]="otp.digit3" maxlength="1" (keyup)="moveToNext($event, 4)"
+                                            value="otp3" />
+                                        <input type="number" formControlName="otp" name="digit4"
+                                            [(ngModel)]="otp.digit4" maxlength="1" (keyup)="moveToNext($event, null)"
+                                            value="otp4" />
+
+                                    </div>
+                                    <button class="btn btn-danger mb-3" (click)="otplogin()">
+                                        OTP
+                                    </button>
+                                </form>
+
+                                <p class="resend text-muted mb-0">
+                                    Didn't receive code? <a href="">Request again</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </div>
+    </div>
+
+
+    <div *ngIf="passwordCnfrmShow" class="modal-dialog modal-dialog-centered" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true" id="exampleotpShowVerfity">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"> Generate Password</h5>
+                <button type="button" class="close" id="close-dismisForgt" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form [formGroup]="passwordGenterForm">
+                <div class="modal-body">
+                    <!-- <p style="font-size: 12px; color: rgb(243, 53, 53); margin-top: -2%;">Please enter your Mobile
+                        Number and we will send you a OTP</p> -->
+                    <div style="margin-top: -1%;" class="login-form text-left">
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" formControlName="password" class="form-control"
+                                [ngClass]="{ 'is-invalid': confirmSubmit && pwdff['password'].errors }" />
+                            <div *ngIf="confirmSubmit && pwdff['password'].errors" class="invalid-feedback">
+                                <div *ngIf="pwdff['password'].errors['required']">Password is required</div>
+                                <div *ngIf="pwdff['password'].errors['minlength']">
+                                    Password must be at least 6 characters
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{
+                        'is-invalid': confirmSubmit && pwdff['confirmPassword'].errors }" />
+                            <div *ngIf="confirmSubmit && pwdff['confirmPassword'].errors" class="invalid-feedback">
+                                <div *ngIf="pwdff['confirmPassword'].errors['required']">
+                                    Confirm Password is required
+                                </div>
+                                <div *ngIf="pwdff['confirmPassword'].errors['mustMatch']">
+                                    Password and confirm not match
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center;" class="form-group">
+                        <button (click)="submitPassword()" type="submit" class="btn btn-danger wd-login-btn">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,115 @@
+<!-- =========================
+        Footer Section
+    ============================== -->
+<footer *ngIf="loadFooter" class="footer footer-2 wow fadeInUp animated" data-wow-delay="900ms">
+
+    <div class="container-fluid custom-width">
+        <div class="row">
+
+            <div class="col-md-12 col-lg-2">
+                <!-- ===========================
+    						Footer About
+    					 =========================== -->
+                <div class="footer-about">
+                    <a href="index.html" class="footer-about-logo">
+                        <img src="assets/img/filLogo.png" alt="Logo">
+                    </a>
+                    <div class="footer-description">
+                        <p>FilDeal:India’s Go-To for Coupons,
+                            Offers & Cashback.</p>
+                    </div>
+                    <div class="wb-social-media">
+                        <a href="https://www.facebook.com/people/Fil-Deal/pfbid0zbxtAQxEQpNEUUjRNvsvdn68raVNd9rnTUA9B6G5fcCoVqN5NypLuQgXXMnK5sj2l/?mibextid=ZbWKwL"
+                            target="_blank" class="bh"><i class="fa fa-facebook-official"></i></a>
+                        <a href="https://www.instagram.com/fildeal_2024/?igsh=YTljMDVuNXV0bW13" target="_blank"
+                            class="gp"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-2 footer-nav">
+                <h6 class="footer-subtitle">Contact Us</h6>
+                <ul>
+                    <li><a style="color: #999;">fildealind@gmail.com</a></li>
+                    <li><a style="color: #999;">7339793979</a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-2 footer-nav">
+                <h6 class="footer-subtitle">Our Branches</h6>
+                <ul>
+                    <li><a style="color: #999;">Hyderbad</a></li>
+                    <li><a style="color: #999;">Bengaluru</a></li>
+                </ul>
+            </div>
+
+            <div class="col-4 col-md-2 col-lg-2  footer-nav">
+                <!-- ===========================
+    						About
+    					 =========================== -->
+                <h6 class="footer-subtitle">FilDeal's</h6>
+                <ul>
+                    <li><a routerLink="/about-us" href="#">About's</a></li>
+                    <li><a routerLink="/terms-conditions" href="#">Privacy Policy</a></li>
+                    <li><a routerLink="/terms-conditions" href="#">Terms & Conditions</a></li>
+
+                </ul>
+            </div>
+            <div class="col-sm-2  footer-nav">
+                <p class="newsletter-content">By subscribing to our mailing list you will always be update with the
+                    latest news from us.</p>
+                <div class="newsletter-form">
+                    <form [formGroup]="subscribeForm">
+                        <div class="form-group">
+                            <input type="text" formControlName="name" class="form-control newsletter-input"
+                                [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+                                placeholder="Enter your email">
+                            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                                <div *ngIf="f['name'].errors['email']">Email is invalid</div>
+                                <div *ngIf="f['name'].errors['pattern']">Email is invalid pattern</div>
+                            </div>
+                        </div>
+                        <button type="submit" (click)="addCustmrSubscribe()" class="btn btn-primary newsletter-btn">Join
+                            us</button>
+                    </form>
+                </div>
+            </div>
+            <div class="offset-1 col-sm-1  footer-nav">
+                <h6 class="footer-subtitle">Download App</h6>
+                <div class="cd-app-download-block">
+                    <div class="qr-img-wrapper"><img alt="QR code" src="assets/img/fildeal-qr-code.png" width="100px"
+                            height="100px"></div>
+
+                    <div style="margin-top: 14px; margin-left: -5%;" class="play-store-logo"><a href=""
+                            target="_blank"><img alt="play store icon"
+                                src="https://d3mqyttn50wslf.cloudfront.net/modules/web/assets/images/home-page/Group_1429.png"
+                                width="135px" height="40px"></a></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</footer>
+<!-- =========================
+        CopyRight
+    ============================== -->
+<section class="copyright wow fadeInUp animated" data-wow-delay="900ms">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="copyright-text">
+                    <p class="text-uppercase">COPYRIGHT &copy; 2024</p><a class="created-by" target="_blank"
+                        href="#">FilDeal.</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="brand-logo d-flex justify-content-start">
+                    <!-- <a href="#">
+                            <img src="assets/img/coupenDeals/logo-icon.png" class="img-fluid" alt="Brand Logo">
+                        </a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

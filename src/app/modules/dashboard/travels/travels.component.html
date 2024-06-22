@@ -1,0 +1,208 @@
+<div *ngIf="loaderShow" class="preloader"></div>
+<!-- =========================
+        Slider Section
+    ============================== -->
+<section style="background-color: #272e3a; overflow-x: hidden" class="blog-slider-tow-grid wd-slider-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <h1 class="wishlist-slider-title">{{travelkeyName}}</h1>
+                    <div class="page-location pt-0">
+                        <ul>
+                            <li><a href="#">
+                                    Home <span class="divider">/</span>
+                                </a></li>
+                            <li><a class="page-location-active" href="#">
+                                    <span class="active-color">Travel's</span>
+                                    <span class="divider">/</span>
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="overflow-x: hidden" class="coupon-area">
+    <div class="container-fluid custom-width">
+        <div class="row">
+            <div class="offset-1 col-lg-3">
+                <div class="coupon-sidebar">
+                    <!--Single coupon sidebar-->
+                    <div class="coupon-sin-sidebar">
+                        <h2>FilDeal-Offers</h2>
+                        <div class="csb-inner">
+                            <p>Don't miss to get discount</p>
+                            <input type="text" placeholder="search..." [(ngModel)]="term">
+                        </div>
+                    </div>
+                    <!--Single coupon sidebar-->
+                    <div class="coupon-sin-sidebar scrol-bar">
+                        <h2>Sub Categories</h2>
+                        <div class="csb-inner">
+                            <ul>
+                                <li *ngFor="let x of subCategryList |filter:term">
+                                    <input type="checkbox" [checked]="x.checked"  (change)="onChangeSubCatgy(x)" >
+                                    <span class="pc">{{x.name}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--Single coupon sidebar-->
+                    <div style="margin-top: 3%;" class="coupon-sin-sidebar scrol-bar">
+                        <h2>Propular Store</h2>
+                        <div class="csb-inner">
+                            <ul>
+                                <li *ngFor="let x of storeDataList |filter:term">
+                                    <input type="checkbox" (change)="onChangeStore(x.id)"
+                                        [checked]="selecteTravelStore.includes(x.id)">
+                                    <span class="pc ">{{x.name}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-8">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-lg-12 col-xl-12 coupon-page-search">
+                                <div class="input-group wd-btn-group header-search-option">
+                                    <input class="form-control blurb-search" [(ngModel)]="termsearch" 
+                                        placeholder="Search..." aria-label="Search for..." type="text">
+                                    <span class="input-group-btn">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section> <br>
+                <!--Single coupon-->
+                <div *ngFor="let x of travelsDataList | filter:termsearch" class="sin-coupon row no-gutters">
+                    <div class="col-sm-3 col-lg-2 col-xl-2">
+                        <div class="coupon-img">
+                            <span class="new">new</span>
+                            <img src="{{x.merchant_logo}}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-lg-6 col-xl-7">
+                        <div class="coupon-content">
+                            <div class="rating">
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                            </div>
+                            <h2>{{x.discount}}</h2>
+                            <p>{{x.description}}</p>
+                            <span class="price">{{x.merchant_name}}</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-4 col-xl-3">
+                        <div class="coupon-code">
+                            <div data-toggle="modal" (click)="getFashionParams(x.id)"
+                                data-target=".bd-example-modal-xl-product-1" class="coupon-code">
+                                <button type="button" class="con-hcode coupon-btn">
+                                    <a style="color: white;">Get Store
+                                        <i class="fa fa-handshake-o" aria-hidden="true"></i></a>
+                                </button>
+                            </div>
+                            <p style="font-size: 15px;">Expires: {{ x.end_date != "null" ? x.end_date : 'unlimited' }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="travelsDataList.length == 0">
+                    <h5 style="color: rgb(236, 20, 20) !important; text-align: center;" class="review-slider-title">
+                        <img width="350" height="350" src="assets/img/nodata.png" alt="">        
+                    </h5>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- modal popup for get coupn code -->
+<div class="modal fade bd-example-modal-xl-product-1" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-hidden="true">
+    <div class="modal-content" class="coupon-modal modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" *ngFor="let x of modelDataId">
+            <div class="modal-header">
+                <img class="poup-header" src="{{x.merchant_logo}}" alt="store_logo">
+                <p>{{x.title}}</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="coupon-modal-body">
+                <div class="coupon-show">
+                    <p style="font-weight: 600;" id="myInput">{{x.coupon_code != 'null' ? x.coupon_code : 'No Coupon
+                        Code Required' }}
+                        <i (click)="copyurllink(x.coupon_code)" style="color: green;cursor:pointer"
+                            class="fa fa-copy"></i>
+                    </p>
+                    <div class="offer-meta-txt">
+                        <div class="activate-wrapper">
+                            <img alt="verified-icon" width="30" src="assets/img/verified_icon.png"
+                                class="verified-icon">
+                            <span>FilDeal Activated</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="store-cta load-offer-btn outlink">
+                                <a href="{{x.affiliate_link}}" target="_blank">
+                                    <div class="outlink-icon">
+                                    </div>
+                                    <span style="color:var(--bs-form-invalid-border-color);" class="store-link "
+                                        gtm-trigger="outclick">Go To <span class="store-link" data-type="html"
+                                            data-model="storeName">{{x.merchant_name}}</span> Website</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 15%;" class="row">
+                    <div class="col-sm-12">
+                        <div class="coupon-feedback">
+                            <div class="smile-wrapper">
+                                <ul class="smile">
+                                    <li><a href="#"><i class="fa fa-thumbs-o-up"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-thumbs-o-down "></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                </ul>
+                                <p>Did this help you save money?</p>
+                            </div>
+                            <a href="{{x.affiliate_link}}" target="_blank" class="mod-store-btn">Go to Store</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="mf-left"> <i class="fa fa-signal" aria-hidden="true"></i>17548 People View This</div>
+                <div class="mf-right">
+                    <ul class="coupon-soc">
+                        <li><a href="https://www.facebook.com/people/Fil-Deal/pfbid0zbxtAQxEQpNEUUjRNvsvdn68raVNd9rnTUA9B6G5fcCoVqN5NypLuQgXXMnK5sj2l/?mibextid=ZbWKwL"
+                                target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/fildeal_2024/?igsh=YTljMDVuNXV0bW13" target="_blank"><i
+                                    class="fa fa-instagram" aria-hidden="true"></i></a></li>
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

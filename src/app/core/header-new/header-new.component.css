@@ -1,0 +1,243 @@
+#wd-header-2 .department {
+  background: #cd3232;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 4px;
+  position: relative;
+  top: 6px !important;
+  margin-left: -12px !important;
+}
+
+
+.preloader {
+  background-color: #d0bdbdbc;
+  background-image: url("../../../assets/img/pro-loader.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100%;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 99999999999;
+}
+
+.menu>ul>li>ul {
+  background: whitesmoke;
+  margin-top: 0;
+  border-top: 2px solid #cd3232;
+  transition: 0.5s;
+  /* min-width: none;  */
+}
+
+.sin-logo[_ngcontent-wkn-c71] {
+  background: var(--bs-tertiary-bg);
+  border: 2px dashed #ddd;
+  padding: 10px;
+  text-align: center;
+  margin-left: 29px !important;
+  margin-top: -30px;
+}
+
+.header-cart .header-wishlist {
+  font-size: 22px;
+  color: var(--bs-white);
+  margin-right: 10px;
+  position: relative;
+}
+
+.header-cart .compare-btn {
+  color: var(--bs-light-bg-subtle);
+  font-size: 22px;
+}
+
+
+
+.nav-link.active,
+p {
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  color: #f8f8f8;
+}
+
+.viewMore a {
+  color: #16b4dcfd;
+  font-size: 10px;
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+.header-signup {
+  background-color: rgb(15, 15, 15);
+  max-width: 148px;
+  border-radius: 3px;
+}
+
+.compare-btn a {
+  background: var(--bs-gray-200);
+  border-color: #f6eeee;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.compare-btn a:hover {
+  background: #f2a0a0;
+}
+
+.wd-dropdown-menu {
+  width: 796px;
+  margin-left: 0px;
+  border-radius: 1px solid red;
+  box-shadow: none;
+  border: 0;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 1206px) {
+  .menu>ul>li>ul {
+    background: var(--bs-light);
+    margin-top: 0;
+    border-top: 2px solid #cd3232;
+    transition: 0.5s;
+    width: 130%;
+    position: absolute;
+  }
+}
+
+
+
+@media screen and (min-width: 1206px) {
+  .dropdown-menu-con {
+    position: absolute;
+    transform: translate3d(-1px, -18px, 0px);
+    top: 40% !important;
+    left: 0px;
+    will-change: transform;
+  }
+}
+
+
+/* @media screen and (min-width: 1206px) {
+  .wd-dropdown-menu {
+    position: absolute;
+    transform: translate3d(-60px, 56px, 0px);
+    top: 60px !important;
+    left: 0px;
+    will-change: transform;
+
+  }
+} */
+
+
+@media screen and (min-width: 1024px) {
+  .wd-dropdown-menu {
+    position: absolute;
+    transform: translate3d(-60px, 56px, 0px);
+    top: 0px !important;
+    left: 0px;
+    will-change: transform;
+
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wd-dropdown-menu {
+    position: absolute;
+    transform: translate3d(-60px, 56px, 0px);
+    top: 65px !important;
+    left: 0px;
+    will-change: transform;
+
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .modal-content {
+    /* position: relative;
+    display: flex;
+    flex-direction: column;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+    margin-top: -30%; */
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .con-verfit {
+    min-width: 500px;
+  }
+}
+
+@media only screen and (min-width:1009px) {
+  .con-verfit {
+    min-width: 500px;
+  }
+}
+
+
+
+
+
+
+
+.otp-field {
+  flex-direction: row;
+  column-gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.otp-field input {
+  height: 45px;
+  width: 42px;
+  border-radius: 6px;
+  outline: none;
+  font-size: 1.125rem;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.otp-field input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.otp-field input::-webkit-inner-spin-button,
+.otp-field input::-webkit-outer-spin-button {
+  display: none;
+}
+
+.resend {
+  font-size: 12px;
+}
+
+.chip {
+  display: inline-block;
+  padding: 6px;
+  height: 55px;
+  font-size: 25px;
+  line-height: 49px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+  width: 175px;
+}
+
+.chip img {
+  float: left;
+  /* margin: 0 10px 0 -25px; */
+  height: 44px;
+  width: 45px;
+  border-radius: 50%;
+  padding: 5px;
+  margin-left: 12px;
+
+}
+.modal-backdrop.show {
+  opacity: 0 !important;
+}

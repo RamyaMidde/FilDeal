@@ -1,0 +1,239 @@
+<section id="main-slider-section" class="review-slider-section coupon-bc">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-lg-3">
+                <!-- <div style="margin-top: 10%;" class="coupon-sin-sidebar">
+                    <h2>Sub Categories</h2>
+                    <div class="csb-inner">
+                        <form action="https://www.themeim.com/action_page.php" method="get">
+                            <ul>
+                                <li><input type="checkbox" name="vehicle" value="Bike"><span
+                                        class="pc">Software</span> </li>
+                                <li><input type="checkbox" name="vehicle" value="Bike"><span class="pc">PC
+                                        Accessories </span></li>
+                                <li><input type="checkbox" name="vehicle" value="Bike"><span
+                                        class="pc">Business</span> </li>
+                                <li><input type="checkbox" name="vehicle" value="Bike"><span
+                                        class="pc">Entertainment</span> </li>
+                                <li><input type="checkbox" name="vehicle" value="Bike"><span class="pc">Personal
+                                        Care</span> </li>
+
+                            </ul>
+                        </form>
+                    </div>
+                </div> -->
+
+            </div>
+            <div class="col-sm-9 col-lg-9">
+                <h1 class="review-slider-title">Mobile Recharge Offers & Coupons</h1>
+                <p class="review-slider-subtitle">Save big using our Recharge coupons & offers from top online websites and More.
+                  </p>
+            </div>
+<!--
+            <div style="margin-top: 2%;"  class="offset-3  col-xl-8">
+                <div class="mark-logo-slider owl-theme d-flex justify-content-center top-Offers-gap">
+                    <div class="sin-logo" *ngFor="let x of fashionDataList | limitLength : 5">
+                        <a href="#"><img src="{{x.logo}}" alt="top-logos"></a>
+                        <p style="font-size: 15px;">{{x.name}}</p>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+</section>
+
+
+<section class="coupon-area">
+    <div class="container-fluid  custom-width">
+        <div class="row">
+            <div class="col-lg-2 offset-1 con-width ">
+                <div class="coupon-sidebar">
+                    <div style="margin-top: 0%; border-radius: 5px;" class="coupon-sin-sidebar">
+                        <h2>Today Best Offers</h2>
+                        <div class="wrapper">
+                            <owl-carousel-o [options]="customOptions">
+                                <ng-container *ngFor="let slide of topBrandList | limitLength: 4">
+                                    <ng-template class="slide" carouselSlide [id]="slide.id">
+                                        <div class="card card-slider img-length">
+                                            <img [src]="slide.merchant_logo" [alt]="slide.alt" [title]="slide.title"
+                                                width="50" height="70">
+                                            <div style="text-align: center;" class="title">
+                                                <span
+                                                    style="color: rgb(6, 194, 6); font-weight: 700; font-size: 15px;">
+                                                    {{slide.discount}}</span>
+                                            </div>
+                                            <div class="hc-cb-info cb-text">
+                                                <div class="cb-text">
+                                                    <!-- <span
+                                                        style="font-weight: 400; text-align: center; font-size: 15px;">
+                                                       Upto &nbsp; {{slide.discount}}</span> -->
+                                                    <button type="button" class="con-hcode">
+                                                        <a style="color: white;" href="{{slide.affiliate_link}}"
+                                                            target="_blank">Get Store</a>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+
+                            </owl-carousel-o>
+                        </div>
+                    </div>
+                    <div class="coupon-sin-sidebar ">
+                        <span style="font-weight: 600;">Filters</span>
+                        <input id="filter-search-input" type="text" class="overall-search-input filter-search-input"
+                            placeholder="Search" autocomplete="off">
+                        <h2 style="margin-top: 9%;">sub Categories</h2>
+                        <div class="csb-inner">
+                            <form action="" method="get">
+                                <ul class="scrol-bar">
+                                    <li *ngFor="let x of fashionSubCatgry">
+                                        <input type="checkbox" (change)="onChangeSubCatgy(x.id)"
+                                            [checked]="selecteFashionSubCagty.includes(x.id)">
+                                        <span class="pc">{{x.name}}</span>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+
+                        <h2 style="margin-top: 9%;">Stores</h2>
+                        <div class="csb-inner">
+                            <form action="" method="get">
+                                <ul class="scrol-bar">
+                                    <li *ngFor="let x of storeDataList">
+                                        <input type="checkbox" (change)="onChangeStore(x.id)"
+                                            [checked]="selecteFashionStore.includes(x.id)">
+                                        <span class="pc ">{{x.name}}</span>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+
+            </div>
+
+
+            <div  class="col-lg-7 offset-1">
+                <div *ngFor="let x of fashionDataList" class="sin-coupon row no-gutters">
+                    <div class="col-sm-8 col-lg-2 col-xl-2">
+                        <div class="coupon-img">
+                            <img src="{{x.merchant_logo}}" alt="22">
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-lg-6 col-xl-7">
+                        <div class="coupon-content">
+                            <h2> {{x.title}}</h2>
+                            <p style="color: #dc3545; font-weight: 600;">{{x.merchant_name}}</p>
+                        </div>
+                        <div class="coupon-accordion">
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                        <h5 class="mb-0">
+                                            <button class="coupon-card-btn" data-toggle="collapse"
+                                                data-target="#collapseThree" aria-expanded="true"
+                                                aria-controls="collapseThree">Coupon details</button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                        data-parent="#accordion">
+                                        <div class="card-body coupon-card-body">
+                                            <p>{{x.description}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-4 col-xl-3">
+                        <div data-toggle="modal" (click)="getFashionParams(x.id)"
+                            data-target=".bd-example-modal-xl-product-1" class="coupon-code">
+                            <button type="button" class="con-hcode">
+                                <a style="color: white;" href="{{x.affiliate_link}}" target="_blank">Get Store</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="fashionDataList.length == 0" class="col-sm-12">
+                    <div class="row">
+                        <div class="card">
+                            <div>
+                                <h1 style="color: rgb(236, 20, 20) !important;" class="review-slider-title">NO DATA FOR
+                                    THIS BRAND..........
+                                    <i class="fa fa-smile-o" style="font-size:30px;color:rgb(0, 255, 157)"></i>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- modal popup for get coupn code -->
+<div class="modal fade bd-example-modal-xl-product-1" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-hidden="true">
+    <div class="coupon-modal modal-dialog modal-dialog-centered" role="document">
+        <div *ngFor="let x of fshIdData" class="modal-content">
+            <div class="modal-header cd-modal-header">
+                <img src="{{x.merchant_logo}}" alt="store_logo" width="100" height="80">
+                <p class="deal-activity title">{{x.title}}</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="coupon-modal-body">
+                <div class="coupon-show">
+                    <p style="font-weight: 600;" id="myInput">{{x?.coupon_code || 'No Coupon Code Required' }}
+                        <i (click)="copyurllink()" style="color: green;cursor:pointer" class="fa fa-copy"></i>
+                    </p>
+                    <div class="offer-meta-txt">
+                        <div class="activate-wrapper">
+                            <img alt="verified-icon" width="30" src="assets/img/verified_icon.png"
+                                class="verified-icon">
+                            <span>FilDeal Activated</span>
+                        </div>
+                    </div>
+                    <div class="store-cta load-offer-btn outlink">
+                        <a href="{{x.affiliate_link}}" target="_blank">
+                            <div class="outlink-icon">
+                            </div>
+                            <span class="store-link " gtm-trigger="outclick">Go To <span class="store-link"
+                                    data-type="html" data-model="storeName">{{x.merchant_name}}</span> Website</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="coupon-feedback">
+                    <div class="smile-wrapper">
+                        <ul class="smile">
+                            <li><a href="#"><i class="fa fa-thumbs-o-up"></i></a></li>
+                            <li><a href="#"><i class="fa fa-thumbs-o-down "></i></a></li>
+                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                        </ul>
+                        <p>Did this help you save money?</p>
+                    </div>
+                    <a href="{{x.affiliate_link}}" target="_blank" class="mod-store-btn">Go to Store</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="mf-left"> <i class="fa fa-signal" aria-hidden="true"></i>17548 People View This</div>
+                <div class="mf-right">
+                    <ul class="coupon-soc">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
